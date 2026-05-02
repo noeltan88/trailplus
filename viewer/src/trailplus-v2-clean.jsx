@@ -278,19 +278,66 @@ const WHEEL_IMGS = [
   "https://trailplus.sg/wp-content/uploads/2020/04/61613201_2310987609175141_1374722626613673984_o.jpg",
 ];
 
+const MACH6_IMGS = [
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698669/20190703_163347_fhahlv.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698670/20190926_003216_m8r4va.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698672/20190703_163822-1-scaled-onkp8qsjprct26t5cfg13ls45avianyi4j9izw0100_fngfop.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698673/20190703_231858_lwdk4j.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698675/20190703_163514-onkp3lmcbebbj0a4dpeiyeib4e876ajdr2qvgdml1s_ggvacl.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698676/20190703_163714_fsmqqf.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698678/20190703_163456_ypthx5.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698679/20190703_163310_nheg4t.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698680/20190703_163405_w2vd5g.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698682/20190703_163559_mfcsoz.jpg",
+];
+const DRUID_IMGS = [
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698662/70263672_2384843011789600_5909129904074522624_o_ppzdnk.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698662/69846704_2384842825122952_8456487862169239552_o_b6ke68.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698664/69690567_2384842871789614_134652056567808000_o_nnsntm.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698664/70341382_2384843065122928_5343015788116705280_o_v1p7pb.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698665/69746199_2384843145122920_5125766223342075904_o_uyltq3.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698667/70156199_2384842968456271_7026751003756068864_o_hofga7.jpg",
+];
+const YETI_IMGS = [
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698026/20200404_145425_f8ibep.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698028/20200404_145544_ninqtw.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698031/20200404_145915_vr0o9s.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698031/20200404_145501_wcjnbt.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698033/20200404_145851_ck7iij.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698034/20200404_145649-onkpr984bap3ppx48xiipflxbhmqw2g705ss92jwgg_y4wz6r.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698035/20200404_145416_ilmqqd.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698036/20200404_145439_rnwyaf.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698038/20200404_145613_vhedjw.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698039/20200404_145837_lc428m.jpg",
+];
 const BANSHEE_IMGS = [
-  "https://trailplus.sg/wp-content/uploads/2020/06/20200529_173035-1024x1024.jpg",
-  "https://trailplus.sg/wp-content/uploads/2020/06/20200529_173259-1024x1024.jpg",
-  "https://trailplus.sg/wp-content/uploads/2020/06/20200529_172953-1024x1024.jpg",
-  "https://trailplus.sg/wp-content/uploads/2020/06/20200529_173008-1024x1024.jpg",
-  "https://trailplus.sg/wp-content/uploads/2020/06/20200529_173246-1024x1024.jpg",
-  "https://trailplus.sg/wp-content/uploads/2020/06/20200529_173110-1024x1024.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698003/20200529_173246-1024x1024_y10pb6.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698005/20200529_173053-1024x1024_aiti7q.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698007/20200529_172934-1024x1024_yzh3um.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698009/20200529_173110-1024x1024_zacxxs.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698010/20200529_172953-1024x1024_pcrz9r.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698012/20200529_173401-1024x1024_uhlu51.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698013/20200529_173131-1024x1024_ylixoa.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698015/20200529_173259-1024x1024_fjlbzh.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698016/20200529_172911-1024x1024_jqagah.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698018/20200529_173121-1024x1024_zxd7qn.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698019/20200529_173307-1024x1024_olnrdt.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698021/20200529_173025-1024x1024_jgnq9k.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698022/20200529_173008-1024x1024_d8yjzp.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698024/20200529_173035-1024x1024_crhkbr.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698025/20200529_172941-1024x1024_vq0alj.jpg",
 ];
 const MACH_IMGS = [
-  "https://trailplus.sg/wp-content/uploads/2020/05/20200523_133522-1024x1024.jpg",
-  "https://trailplus.sg/wp-content/uploads/2020/05/20200523_133638-1024x1024.jpg",
-  "https://trailplus.sg/wp-content/uploads/2020/05/20200523_134104-1024x1024.jpg",
-  "https://trailplus.sg/wp-content/uploads/2020/05/20200523_133650-1024x1024.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777697992/20200523_133824-1024x1024_hs6fyg.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777697992/20200523_133522-1024x1024_jvy4w1.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777697993/20200523_133813-1024x1024_q39utd.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777697994/20200523_133650-1024x1024_iqobc9.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777697996/20200523_133630-1024x1024_xf2yew.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777697997/20200523_133806-1024x1024_eaqzcp.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777697999/20200523_134104-1024x1024_ixpy7g.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698000/20200523_133535-1024x1024_tvge7c.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698002/20200523_133638-1024x1024_yfziow.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777698006/20200523_133503-1024x1024_oqntkh.jpg",
 ];
 
 /* ─── COMPONENTS ─── */
@@ -537,6 +584,9 @@ function PageFullService({ onBack }) {
 
 function PageBikeBuild({ onBack }) {
   const builds = [
+    { name:"PIVOT MACH 6", imgs: MACH6_IMGS },
+    { name:"FORBIDDEN DRUID", imgs: DRUID_IMGS },
+    { name:"YETI SB150", imgs: YETI_IMGS },
     { name:"BANSHEE TITAN", imgs: BANSHEE_IMGS },
     { name:"PIVOT MACH 5.5", imgs: MACH_IMGS },
   ];
