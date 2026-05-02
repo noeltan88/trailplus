@@ -609,7 +609,7 @@ function PageBikeBuild({ onBack }) {
           <div className="tp-build-cta-title">Ready to Build?</div>
           <div className="tp-build-cta-desc">Too many options? Let us help narrow it down based on your riding style and budget.</div>
           <BookBtn label="Start Your Build" />
-          <a href="https://wa.me/6588661169" className="tp-btn-dark" target="_blank" rel="noreferrer">
+          <a href="https://wa.me/6591832244" className="tp-btn-dark" target="_blank" rel="noreferrer">
             Chat on WhatsApp <span>→</span>
           </a>
         </div>
@@ -739,7 +739,7 @@ function PageTraining({ onBack }) {
           <a href="http://www.rawepics.com/" className="tp-training-link" target="_blank" rel="noreferrer">🌐 Visit RAW Epics Website</a>
           <a href="mailto:rawepics@gmail.com" className="tp-training-link">✉️ Email Wilson — rawepics@gmail.com</a>
           <a href="https://www.surveymonkey.com/r/X3XVBFZ" className="tp-training-link" target="_blank" rel="noreferrer">📋 Fill Skills Pre-Training Questionnaire</a>
-          <a href="tel:+6598784113" className="tp-training-link">📞 +65 9878 4113</a>
+          <a href="tel:+6591832244" className="tp-training-link">📞 +65 9183 2244</a>
         </div>
       </div>
     </div>
@@ -791,34 +791,36 @@ function HomePage({ onNav }) {
         </div>
         <div className="tp-divider" />
 
-        {/* Google Review */}
-        <div className="tp-review">
-          <svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink:0 }}>
-            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
-            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-          </svg>
-          <div>
-            <div style={{ display:"flex", alignItems:"center", gap:"0.3rem" }}>
-              <span className="tp-review-score">4.9</span>
-              <span className="tp-review-stars">★★★★★</span>
+        <div style={{ display:"flex", gap:"0.75rem" }}>
+          {/* Google Review */}
+          <div className="tp-review" style={{ flex:1 }}>
+            <svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink:0 }}>
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            <div>
+              <div style={{ display:"flex", alignItems:"center", gap:"0.3rem" }}>
+                <span className="tp-review-score">4.9</span>
+                <span className="tp-review-stars">★★★★★</span>
+              </div>
+              <span className="tp-review-info">57 Google Reviews</span>
             </div>
-            <span className="tp-review-info">57 Google Reviews</span>
           </div>
-        </div>
 
-        {/* Facebook Review */}
-        <div className="tp-review">
-          <svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink:0 }}>
-            <path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.887v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z" fill="#1877F2"/>
-          </svg>
-          <div>
-            <div style={{ display:"flex", alignItems:"center", gap:"0.3rem" }}>
-              <span className="tp-review-score">5.0</span>
-              <span className="tp-review-stars">★★★★★</span>
+          {/* Facebook Review */}
+          <div className="tp-review" style={{ flex:1 }}>
+            <svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink:0 }}>
+              <path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.887v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z" fill="#1877F2"/>
+            </svg>
+            <div>
+              <div style={{ display:"flex", alignItems:"center", gap:"0.3rem" }}>
+                <span className="tp-review-score">5.0</span>
+                <span className="tp-review-stars">★★★★★</span>
+              </div>
+              <span className="tp-review-info">40 Facebook Reviews</span>
             </div>
-            <span className="tp-review-info">40 Facebook Reviews</span>
           </div>
         </div>
       </section>
@@ -883,7 +885,7 @@ function HomePage({ onNav }) {
       <section className="tp-cta">
         <div className="tp-cta-eye">Ready to Level Up?</div>
         <div className="tp-cta-title">BOOK YOUR<br />SERVICE TODAY</div>
-        <a href="https://wa.me/6588661169" className="tp-cta-btn" target="_blank" rel="noreferrer">BOOK NOW VIA WHATSAPP 💬</a>
+        <a href="https://wa.me/6591832244" className="tp-cta-btn" target="_blank" rel="noreferrer">BOOK NOW VIA WHATSAPP 💬</a>
         <span className="tp-cta-alt-lbl">OR</span>
         <a href="https://trailplus.sg/servicing-request-form/" className="tp-cta-alt-link" target="_blank" rel="noreferrer">CONTACT US →</a>
       </section>
@@ -944,7 +946,7 @@ function HomePage({ onNav }) {
         <div className="tp-footer-sub">MTB PERFORMANCE LAB</div>
         <div className="tp-footer-tag">Singapore's MTB Performance Lab. Expert servicing, custom builds and precision tuning for riders who demand more from their ride.</div>
         <div className="tp-footer-socials">
-          {[["📷","https://instagram.com/trailplus.sg"],["📘","https://facebook.com/trailplus.sg"],["▶️","#"],["🎵","#"],["💬","https://wa.me/6588661169"]].map(([ic,hr],i) => (
+          {[["📷","https://instagram.com/trailplus.sg"],["📘","https://facebook.com/trailplus.sg"],["▶️","#"],["🎵","#"],["💬","https://wa.me/6591832244"]].map(([ic,hr],i) => (
             <a key={i} href={hr} className="tp-footer-social" target="_blank" rel="noreferrer">{ic}</a>
           ))}
         </div>
@@ -963,8 +965,8 @@ function HomePage({ onNav }) {
           </div>
           <div>
             <div className="tp-footer-col-ttl">Contact</div>
-            <div className="tp-footer-crow"><span className="tp-footer-cicon">📍</span><span className="tp-footer-ctxt">10 Kaki Bukit Rd 2<br />#01-02, Singapore 417868</span></div>
-            <div className="tp-footer-crow"><span className="tp-footer-cicon">📞</span><span className="tp-footer-ctxt">+65 8866 1169</span></div>
+            <div className="tp-footer-crow"><span className="tp-footer-cicon">📍</span><span className="tp-footer-ctxt">50 Bukit Batok Crescent, #03-16<br />Midview Building, Singapore 659578</span></div>
+            <div className="tp-footer-crow"><span className="tp-footer-cicon">📞</span><span className="tp-footer-ctxt">+65 9183 2244</span></div>
             <div className="tp-footer-crow"><span className="tp-footer-cicon">✉️</span><span className="tp-footer-ctxt">hello@trailplus.sg</span></div>
             <div className="tp-footer-crow"><span className="tp-footer-cicon">🕐</span><span className="tp-footer-ctxt">Mon–Sat: 11AM–8PM<br />Sun & PH: Closed</span></div>
           </div>
