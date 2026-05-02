@@ -408,12 +408,12 @@ function PageFullService({ onBack }) {
         "All bolts will be torqued according to bike specifications.",
       ],
       images: [
-        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696941/20200320_144600-scaled-ona6gkhawyfjnqm1a6hujpvsq0jc9jbuxc0k41gub8_zk1nlu.jpg",
-        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696940/20200717_174147-scaled-osopw70aa4qwmhoo2dkh2qdjjjiztsj7oukrtfvzig_bjhvyz.jpg",
-        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696940/20200316_153834-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_jcl0m9.jpg",
-        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696939/20200327_131208-1-scaled-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_s7gq2f.jpg",
-        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696938/20200327_132137-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_vdbtwu.jpg",
+        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696935/20200316_155728-1-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_gnnnpu.jpg",
+        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696936/20200327_131129-scaled-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_sv9asc.jpg",
         "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696937/20200316_153750-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_prgh2o.jpg",
+        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696938/20200327_132137-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_vdbtwu.jpg",
+        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696939/20200327_131208-1-scaled-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_s7gq2f.jpg",
+        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696940/20200717_174147-scaled-osopw70aa4qwmhoo2dkh2qdjjjiztsj7oukrtfvzig_bjhvyz.jpg",
       ],
     },
     {
@@ -423,8 +423,8 @@ function PageFullService({ onBack }) {
         "Both fork and shock will be washed and polished.",
       ],
       images: [
-        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696936/20200327_131129-scaled-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_sv9asc.jpg",
-        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696935/20200316_155728-1-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_gnnnpu.jpg",
+        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696933/20200403_134710-scaled-oniw2og1prtj9nsxn9j6oqbyzz9s49655mca1c54zs_yv3tb4.jpg",
+        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696934/20200403_135350-scaled-oniw2kooyfodz7ye97woera4mfsb9gr7t3qc48apoo_hezojd.jpg",
       ],
     },
     {
@@ -440,12 +440,12 @@ function PageFullService({ onBack }) {
         "Pedals",
       ],
       images: [
-        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696934/20200327_131037-scaled-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_mm6yjy.jpg",
-        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696934/20200403_135350-scaled-oniw2kooyfodz7ye97woera4mfsb9gr7t3qc48apoo_hezojd.jpg",
-        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696933/20200403_134710-scaled-oniw2og1prtj9nsxn9j6oqbyzz9s49655mca1c54zs_yv3tb4.jpg",
-        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696932/20200316_123049-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_zgsjab.jpg",
-        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696931/73390662_2423666464573921_8789132486538952704_o-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_c9xoxi.jpg",
-        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696930/20200327_132712-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_ko6fe7.jpg",
+        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696925/20200718_213118-scaled-osopyb57npn4qwm2psh96p5vnr3q59xgzbf3our3ig_q327rz.jpg",
+        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696925/20200717_174656-scaled-osoq0cgmgsfhwhnkto65l6ntzt2cto0j9eaz4fqe14_xcyvzx.jpg",
+        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696926/20200316_130732-scaled-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_h40nee.jpg",
+        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696927/20200316_155757-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_kb5cyr.jpg",
+        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696929/20200316_155841-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_bgg2dq.jpg",
+        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696929/20200327_132003-scaled-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_ixiun4.jpg",
       ],
     },
     {
@@ -456,8 +456,8 @@ function PageFullService({ onBack }) {
         "All bearings will be de-greased, washed, inspected, and re-greased.",
       ],
       images: [
-        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696929/20200316_155841-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_bgg2dq.jpg",
-        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696929/20200327_132003-scaled-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_ixiun4.jpg",
+        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696934/20200327_131037-scaled-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_mm6yjy.jpg",
+        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696940/20200316_153834-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_jcl0m9.jpg",
       ],
     },
     {
@@ -470,7 +470,7 @@ function PageFullService({ onBack }) {
         "Rotors will be cleaned with brake cleaner.",
       ],
       images: [
-        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696928/20200327_124239-scaled-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_hxmrnq.jpg",
+        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696941/20200320_144600-scaled-ona6gkhawyfjnqm1a6hujpvsq0jc9jbuxc0k41gub8_zk1nlu.jpg",
       ],
     },
     {
@@ -482,12 +482,12 @@ function PageFullService({ onBack }) {
         "Both wheels will be re-trued (depending on the condition & quality of build).",
       ],
       images: [
-        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696927/20200316_155757-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_kb5cyr.jpg",
-        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696926/20200316_130732-scaled-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_h40nee.jpg",
         "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696925/76202972_2423666737907227_6415204624956915712_o-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_z5mzoh.jpg",
-        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696925/20200718_213118-scaled-osopyb57npn4qwm2psh96p5vnr3q59xgzbf3our3ig_q327rz.jpg",
         "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696925/73361307_2423666577907243_6179878135538909184_o-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_u2zxna.jpg",
-        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696925/20200717_174656-scaled-osoq0cgmgsfhwhnkto65l6ntzt2cto0j9eaz4fqe14_xcyvzx.jpg",
+        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696928/20200327_124239-scaled-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_hxmrnq.jpg",
+        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696930/20200327_132712-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_ko6fe7.jpg",
+        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696931/73390662_2423666464573921_8789132486538952704_o-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_c9xoxi.jpg",
+        "https://res.cloudinary.com/dhumj7ari/image/upload/v1777696932/20200316_123049-ona6gkhawyidypbgyjw5791un8scmz7rwrhq8u3nns_zgsjab.jpg",
       ],
     },
   ];
