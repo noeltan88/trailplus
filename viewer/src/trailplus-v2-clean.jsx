@@ -287,8 +287,8 @@ html{-webkit-text-size-adjust:100%;}
   .tp-ts-num{font-size:1.6rem;}
 
   /* SERVICES */
-  .tp-home-services{padding:5rem 0;}
-  .tp-home-services-hdr{padding:0 6vw;max-width:1320px;margin-left:auto;margin-right:auto;}
+  .tp-home-services{padding:5rem 6vw;}
+  .tp-home-services-hdr{padding:0;max-width:none;margin-left:0;margin-right:0;}
   .tp-sec-title-lg{font-size:3rem;}
   .tp-svc-carousel{display:none!important;}
   .tp-svc-desktop-grid{display:grid!important;grid-template-columns:repeat(3,1fr);gap:0;padding:0;max-width:1320px;margin:2rem auto 0;}
@@ -379,7 +379,8 @@ html{-webkit-text-size-adjust:100%;}
   .tp-trust{padding:5rem 8vw;}
   .tp-trust-inner{gap:7rem;}
   .tp-trust-title{font-size:3.5rem;}
-  .tp-home-services-hdr{padding:0 8vw;}
+  .tp-home-services{padding:6rem 8vw;}
+  .tp-home-services-hdr{padding:0;}
   .tp-svc-desktop-grid{max-width:none;padding:0;}
   .tp-process{padding:6rem 8vw;}
   .tp-process-title{font-size:4.5rem;}
