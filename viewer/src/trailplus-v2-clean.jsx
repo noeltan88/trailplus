@@ -285,6 +285,11 @@ html{-webkit-text-size-adjust:100%;}
 /* GALLERY */
 .tp-gallery-desktop{display:none;}
 
+/* MESSENGER FLOAT */
+.tp-messenger{position:fixed;bottom:1.4rem;right:1.4rem;z-index:9999;width:56px;height:56px;border-radius:50%;background:#C8FF00;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,0.45);cursor:pointer;text-decoration:none;border:none;transition:transform 0.18s ease,box-shadow 0.18s ease;}
+.tp-messenger:hover{transform:scale(1.1);box-shadow:0 6px 24px rgba(0,0,0,0.55);}
+.tp-messenger svg{display:block;}
+
 /* FOOTER */
 .tp-footer{background:${CARD};border-top:1px solid ${BR};padding:2rem 1.3rem 1.5rem;}
 .tp-footer-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.65rem;letter-spacing:0.05em;color:#fff;line-height:1;}
@@ -1925,6 +1930,19 @@ export default function TrailPlusApp() {
 
         {/* PAGE CONTENT */}
         {renderPage()}
+
+        {/* MESSENGER FLOAT BUTTON */}
+        <a
+          href="https://m.me/trailplus"
+          target="_blank"
+          rel="noreferrer"
+          className="tp-messenger"
+          aria-label="Chat on Messenger"
+        >
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 2C7.373 2 2 7.075 2 13.35c0 3.462 1.67 6.548 4.284 8.6V26l3.9-2.14A12.5 12.5 0 0014 24.7c6.627 0 12-5.075 12-11.35S20.627 2 14 2zm1.19 15.29-3.05-3.25-5.96 3.25 6.55-6.95 3.13 3.25 5.88-3.25-6.55 6.95z" fill="#000"/>
+          </svg>
+        </a>
       </div>
     </div>
   );
