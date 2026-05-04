@@ -312,7 +312,7 @@ html{-webkit-text-size-adjust:100%;}
 
   /* HERO */
   .tp-hero{min-height:88vh;padding:6rem 6vw 5rem;}
-  .tp-hero-content{max-width:1320px;margin:0 auto;}
+  .tp-hero-content{width:100%;max-width:1320px;margin:0 auto;}
   .tp-hero-h1{font-size:5.8rem;margin-bottom:1.5rem;max-width:820px;}
   .tp-hero-desc{font-size:1rem;max-width:480px;margin-bottom:2.5rem;}
   .tp-hero-btns{display:flex!important;flex-direction:row!important;gap:1rem;align-items:stretch;}
