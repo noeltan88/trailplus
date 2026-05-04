@@ -292,7 +292,7 @@ html{-webkit-text-size-adjust:100%;}
 
   /* SERVICES */
   .tp-home-services{padding:5rem 6vw;}
-  .tp-home-services-hdr{padding:0;max-width:none;margin-left:0;margin-right:0;}
+  .tp-home-services-hdr{padding:0;max-width:1320px;margin:0 auto;}
   .tp-sec-title-lg{font-size:3rem;}
   .tp-svc-carousel{display:none!important;}
   .tp-svc-desktop-grid{display:grid!important;grid-template-columns:repeat(3,1fr);gap:0;padding:0;max-width:1320px;margin:2rem auto 0;}
@@ -1130,10 +1130,10 @@ function HomePage({ onNav }) {
 
       {/* TESTIMONIALS */}
       <section className="tp-test">
+        <div className="tp-test-inner">
         <div className="tp-sec-tag">What Riders Say</div>
         <div className="tp-sec-title-lg">REAL RIDERS.<br />REAL FEEDBACK.</div>
         <div className="tp-accent-line" style={{ marginBottom:"1.5rem" }} />
-        <div className="tp-test-inner">
           <div className="tp-test-quote">❝❝</div>
           {/* Mobile: single card */}
           <div className="tp-test-single">
