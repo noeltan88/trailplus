@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const L = "#C8FF00";
 const BG = "#0a0a0a";
@@ -169,7 +169,7 @@ html{-webkit-text-size-adjust:100%;}
 .tp-hero{position:relative;min-height:520px;display:flex;flex-direction:column;justify-content:flex-end;padding:2rem 1.3rem 2rem;overflow:hidden;}
 .tp-hero-bg{position:absolute;inset:0;background:#0a0a0a;}
 .tp-hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.15) 0%,rgba(0,0,0,0.5) 45%,rgba(0,0,0,0.92) 100%);}
-.tp-hero-content{position:relative;z-index:2;text-align:left;}
+.tp-hero-content{position:relative;z-index:2;text-align:left;width:100%;}
 .tp-hero-h1{font-family:'Barlow Condensed',sans-serif;font-size:3.2rem;font-weight:900;line-height:0.92;text-transform:uppercase;margin-bottom:1rem;letter-spacing:0.01em;}
 .tp-hero-h1 .wh{color:#fff;}
 .tp-hero-h1 .gr{color:${L};font-style:italic;}
@@ -413,7 +413,7 @@ html{-webkit-text-size-adjust:100%;}
 
   /* FULL SERVICE */
   .tp-fs-desktop-grid{display:grid!important;grid-template-columns:repeat(2,1fr);gap:2.5rem;align-items:start;}
-  .tp-gallery-main{aspect-ratio:unset!important;height:400px!important;}
+  .tp-gallery-main{width:100%!important;height:400px!important;aspect-ratio:unset!important;}
 
   /* BIKE BUILD */
   .tp-build-grid{grid-template-columns:repeat(5,1fr);gap:4px;}
@@ -1218,6 +1218,8 @@ function PageServiceRequest({ onBack }) {
 function HomePage({ onNav }) {
   const [activeSvc, setActiveSvc] = useState(0);
   const [activeTest, setActiveTest] = useState(0);
+  const svcTouchX = useRef(null);
+  const testTouchX = useRef(null);
 
   return (
     <>
@@ -1318,7 +1320,15 @@ function HomePage({ onNav }) {
           <div className="tp-accent-line" />
         </div>
         {/* Mobile carousel */}
-        <div className="tp-svc-carousel">
+        <div className="tp-svc-carousel"
+          onTouchStart={e => { svcTouchX.current = e.touches[0].clientX; }}
+          onTouchEnd={e => {
+            if (svcTouchX.current === null) return;
+            const dx = svcTouchX.current - e.changedTouches[0].clientX;
+            if (Math.abs(dx) > 50) setActiveSvc(p => dx > 0 ? (p + 1) % SVCS.length : (p - 1 + SVCS.length) % SVCS.length);
+            svcTouchX.current = null;
+          }}
+        >
           <div className="tp-svc-card" onClick={() => onNav(SVCS[activeSvc].page)}>
             <div className="tp-svc-img">
               <img src={BUILD_IMGS[activeSvc % BUILD_IMGS.length]} alt={SVCS[activeSvc].name} onError={e => e.target.style.display="none"} />
@@ -1419,7 +1429,15 @@ function HomePage({ onNav }) {
         <div className="tp-accent-line" style={{ marginBottom:"1.5rem" }} />
           <div className="tp-test-quote">❝❝</div>
           {/* Mobile: single card */}
-          <div className="tp-test-single">
+          <div className="tp-test-single"
+            onTouchStart={e => { testTouchX.current = e.touches[0].clientX; }}
+            onTouchEnd={e => {
+              if (testTouchX.current === null) return;
+              const dx = testTouchX.current - e.changedTouches[0].clientX;
+              if (Math.abs(dx) > 50) setActiveTest(p => dx > 0 ? (p + 1) % TESTS.length : (p - 1 + TESTS.length) % TESTS.length);
+              testTouchX.current = null;
+            }}
+          >
             <div className="tp-test-card">
               <div className="tp-test-text">{TESTS[activeTest].q}</div>
               <div className="tp-test-author">
