@@ -1,4 +1,5 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 
 const L = "#C8FF00";
 const BG = "#0a0a0a";
@@ -639,17 +640,37 @@ const MACH_IMGS = [
 
 /* ─── COMPONENTS ─── */
 
-function BackBtn({ label="All Services", onClick }) {
+/* ─── ROUTING HELPERS ─── */
+const toPath = p => ({
+  home:             "/",
+  packages:         "/servicing-packages",
+  "full-service":   "/full-service",
+  "bike-build":     "/custom-builds",
+  "wheel-build":    "/custom-wheel-build",
+  training:         "/raw-epics",
+  "service-request":"/servicing-request",
+  directions:       "/directions",
+}[p] ?? "/");
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+}
+
+function BackBtn({ label="All Services" }) {
+  const navigate = useNavigate();
   return (
-    <div className="tp-page-back" onClick={onClick}>
+    <div className="tp-page-back" onClick={() => navigate(-1)}>
       ← {label}
     </div>
   );
 }
 
-function BookBtn({ label="Make an Appointment", onNav }) {
+function BookBtn({ label="Make an Appointment" }) {
+  const navigate = useNavigate();
   return (
-    <button className="tp-btn-lime" onClick={() => onNav("service-request")}>
+    <button className="tp-btn-lime" onClick={() => navigate("/servicing-request")}>
       {label} <span>→</span>
     </button>
   );
@@ -657,11 +678,11 @@ function BookBtn({ label="Make an Appointment", onNav }) {
 
 /* ─── SUB-PAGES ─── */
 
-function PageServicePackages({ onBack, onNav }) {
+function PageServicePackages() {
   return (
     <div>
       <div className="tp-page-hero">
-        <BackBtn onClick={onBack} />
+        <BackBtn />
         <div className="tp-sec-tag">Services</div>
         <div className="tp-page-title">Servicing<br />Packages</div>
         <p className="tp-page-desc">Choose the right service tier for your bike — from a full stripdown to a quick tune-up.</p>
@@ -682,7 +703,7 @@ function PageServicePackages({ onBack, onNav }) {
               <ul className="tp-pkg-list">
                 {pkg.items.map((item, i) => <li key={i}>{item}</li>)}
               </ul>
-              <BookBtn onNav={onNav} />
+              <BookBtn />
             </div>
           ))}
         </div>
@@ -760,7 +781,7 @@ function GallerySlider({ images }) {
   );
 }
 
-function PageFullService({ onBack, onNav }) {
+function PageFullService() {
   const sections = [
     {
       label: "Frame", icon: "🏗️",
@@ -858,7 +879,7 @@ function PageFullService({ onBack, onNav }) {
   return (
     <div>
       <div className="tp-page-hero">
-        <BackBtn onClick={onBack} />
+        <BackBtn />
         <div className="tp-sec-tag">Full Service</div>
         <div className="tp-page-title">Full-Service<br />(Full-sus MTB)</div>
         <p className="tp-page-desc">All bikes sent in for full-service will be tested and inspected before strip down. During the full-service process, any damaged or in need of replacement parts will be replaced only with the owner's consent.</p>
@@ -892,7 +913,7 @@ function PageFullService({ onBack, onNav }) {
         </div>
 
         <div style={{ marginTop:"1.5rem" }}>
-          <BookBtn onNav={onNav} />
+          <BookBtn />
         </div>
         </div>{/* /tp-fs-inner */}
       </div>
@@ -900,7 +921,7 @@ function PageFullService({ onBack, onNav }) {
   );
 }
 
-function PageBikeBuild({ onBack, onNav }) {
+function PageBikeBuild() {
   const builds = [
     { name:"PIVOT MACH 6", imgs: MACH6_IMGS },
     { name:"FORBIDDEN DRUID", imgs: DRUID_IMGS },
@@ -911,7 +932,7 @@ function PageBikeBuild({ onBack, onNav }) {
   return (
     <div>
       <div className="tp-page-hero">
-        <BackBtn onClick={onBack} />
+        <BackBtn />
         <div className="tp-sec-tag">Custom Build</div>
         <div className="tp-page-title">Custom<br />Bike-Build</div>
         <p className="tp-page-desc">Your dream machine. Every component chosen with purpose — frame, drivetrain, wheels, brakes — all tailored to how you ride.</p>
@@ -926,7 +947,7 @@ function PageBikeBuild({ onBack, onNav }) {
         <div className="tp-build-cta-wrap">
           <div className="tp-build-cta-title">Ready to Build?</div>
           <div className="tp-build-cta-desc">Too many options? Let us help narrow it down based on your riding style and budget.</div>
-          <BookBtn label="Start Your Build" onNav={onNav} />
+          <BookBtn label="Start Your Build" />
           <a href="https://wa.me/6591832244" className="tp-btn-dark" target="_blank" rel="noreferrer">
             Chat on WhatsApp <span>→</span>
           </a>
@@ -949,7 +970,7 @@ function PageBikeBuild({ onBack, onNav }) {
   );
 }
 
-function PageWheelBuild({ onBack }) {
+function PageWheelBuild() {
   const factors = [
     { icon:"⚖️", label:"Weight" }, { icon:"💪", label:"Strength" },
     { icon:"🏔️", label:"Riding Type" }, { icon:"💰", label:"Budget" },
@@ -958,7 +979,7 @@ function PageWheelBuild({ onBack }) {
   return (
     <div>
       <div className="tp-page-hero">
-        <BackBtn onClick={onBack} />
+        <BackBtn />
         <div className="tp-sec-tag">Custom Wheels</div>
         <div className="tp-page-title">Custom<br />Wheel-Build</div>
         <p className="tp-page-desc">Hand-built wheels, meticulously tensioned and stress-relieved. Our reputation speaks for itself — riders keep coming back.</p>
@@ -982,7 +1003,7 @@ function PageWheelBuild({ onBack }) {
         <div className="tp-build-cta-wrap" style={{ marginBottom:"1.5rem" }}>
           <div className="tp-build-cta-title">Not Sure Where to Start?</div>
           <div className="tp-build-cta-desc">Contact us and we'll help you choose the right hub, rim, and spoke setup for your ride.</div>
-          <BookBtn label="Enquire Now" onNav={onNav} />
+          <BookBtn label="Enquire Now" />
         </div>
 
         <div className="tp-sec-title" style={{ marginBottom:"0.8rem" }}>Recent Builds</div>
@@ -998,7 +1019,7 @@ function PageWheelBuild({ onBack }) {
   );
 }
 
-function PageTraining({ onBack, onNav }) {
+function PageTraining() {
   const certs = [
     "Professional Mountain Bike Instructors Association Level 2 Certification",
     "Cycling UK Mountain Bike Leader Certification",
@@ -1007,7 +1028,7 @@ function PageTraining({ onBack, onNav }) {
   return (
     <div>
       <div className="tp-page-hero">
-        <BackBtn onClick={onBack} />
+        <BackBtn />
         <div className="tp-sec-tag">Training & Guiding</div>
         <div className="tp-page-title">MTB Training<br />&amp; Guiding</div>
         <p className="tp-page-desc">Improve your skills, push your limits, and explore trails with confidence — powered by RAW Epics.</p>
@@ -1073,7 +1094,7 @@ function PageTraining({ onBack, onNav }) {
 }
 
 /* ─── SERVICE REQUEST FORM PAGE ─── */
-function PageServiceRequest({ onBack }) {
+function PageServiceRequest() {
   const [servicing, setServicing] = useState("");
   const [delivery, setDelivery] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -1109,7 +1130,7 @@ function PageServiceRequest({ onBack }) {
     return (
       <div>
         <div className="tp-page-hero">
-          <BackBtn onClick={onBack} />
+          <BackBtn />
           <div className="tp-sec-tag">Book a Service</div>
           <div className="tp-page-title">Request<br />Received</div>
           <div className="tp-accent-line" />
@@ -1155,7 +1176,7 @@ function PageServiceRequest({ onBack }) {
   return (
     <div>
       <div className="tp-page-hero">
-        <BackBtn onClick={onBack} />
+        <BackBtn />
         <div className="tp-sec-tag">Book a Service</div>
         <div className="tp-page-title">Servicing<br />Request</div>
         <p className="tp-page-desc">Fill in the details below and we'll get back to confirm your booking.</p>
@@ -1303,7 +1324,7 @@ function PageServiceRequest({ onBack }) {
 }
 
 /* ─── DIRECTIONS PAGE ─── */
-function PageDirections({ onBack }) {
+function PageDirections() {
   const CL = "https://res.cloudinary.com/dhumj7ari/image/upload";
 
   // ── Cloudinary URLs (Trail+/Directions) ─────────────────────────────────
@@ -1352,7 +1373,7 @@ function PageDirections({ onBack }) {
 
       {/* Page hero */}
       <div className="tp-page-hero">
-        <BackBtn onClick={onBack} />
+        <BackBtn />
         <div className="tp-sec-tag">Getting Here</div>
         <div className="tp-page-title">DIRECTIONS</div>
         <div className="tp-accent-line" />
@@ -1446,7 +1467,8 @@ function PageDirections({ onBack }) {
 }
 
 /* ─── HOME PAGE ─── */
-function HomePage({ onNav }) {
+function HomePage() {
+  const navigate = useNavigate();
   const [activeSvc, setActiveSvc] = useState(0);
   const [activeTest, setActiveTest] = useState(0);
   const svcTouchX = useRef(null);
@@ -1467,8 +1489,8 @@ function HomePage({ onNav }) {
           </h1>
           <p className="tp-hero-desc">Expert servicing, custom builds and precision tuning for riders who take their ride seriously.</p>
           <div className="tp-hero-btns" style={{display:"flex",flexDirection:"column"}}>
-            <button className="tp-home-btn-lime" onClick={() => onNav("service-request")}>BOOK A SERVICE <span>→</span></button>
-            <div className="tp-home-btn-dark" style={{ cursor:"pointer", marginTop:"0.7rem" }} onClick={() => onNav("bike-build")}>BUILD YOUR BIKE <span>→</span></div>
+            <button className="tp-home-btn-lime" onClick={() => navigate(toPath("service-request"))}>BOOK A SERVICE <span>→</span></button>
+            <div className="tp-home-btn-dark" style={{ cursor:"pointer", marginTop:"0.7rem" }} onClick={() => navigate(toPath("bike-build"))}>BUILD YOUR BIKE <span>→</span></div>
           </div>
         </div>
       </section>
@@ -1563,7 +1585,7 @@ function HomePage({ onNav }) {
           <div className="tp-svc-track" style={{ transform:`translateX(-${activeSvc * 100}%)` }}>
             {SVCS.map((svc, i) => (
               <div key={svc.num} className="tp-svc-slide">
-                <div className="tp-svc-card" onClick={() => onNav(svc.page)}>
+                <div className="tp-svc-card" onClick={() => navigate(toPath(svc.page))}>
                   <div className="tp-svc-img">
                     <img src={BUILD_IMGS[i % BUILD_IMGS.length]} alt={svc.name} onError={e => e.target.style.display="none"} />
                     <div className="tp-svc-num-tag">{svc.num}</div>
@@ -1585,7 +1607,7 @@ function HomePage({ onNav }) {
         {/* Desktop grid — all services */}
         <div className="tp-svc-desktop-grid" style={{display:"none"}}>
           {SVCS.map((svc,i) => (
-            <div key={svc.num} className="tp-svc-card" onClick={() => onNav(svc.page)}>
+            <div key={svc.num} className="tp-svc-card" onClick={() => navigate(toPath(svc.page))}>
               <div className="tp-svc-img">
                 <img src={BUILD_IMGS[i % BUILD_IMGS.length]} alt={svc.name} onError={e => e.target.style.display="none"} />
                 <div className="tp-svc-num-tag">{svc.num}</div>
@@ -1634,7 +1656,7 @@ function HomePage({ onNav }) {
           <div className="tp-cta-actions">
             <a href="https://wa.me/6591832244" className="tp-cta-btn" target="_blank" rel="noreferrer">BOOK NOW VIA WHATSAPP 💬</a>
             <span className="tp-cta-alt-lbl">OR</span>
-            <span className="tp-cta-alt-link" style={{cursor:"pointer"}} onClick={() => onNav("service-request")}>CONTACT US →</span>
+            <span className="tp-cta-alt-link" style={{cursor:"pointer"}} onClick={() => navigate(toPath("service-request"))}>CONTACT US →</span>
           </div>
         </div>
       </section>
@@ -1652,7 +1674,7 @@ function HomePage({ onNav }) {
             </div>
           ))}
         </div>
-        <div className="tp-builds-link" onClick={() => onNav("bike-build")}>VIEW ALL BUILDS <span>→</span></div>
+        <div className="tp-builds-link" onClick={() => navigate(toPath("bike-build"))}>VIEW ALL BUILDS <span>→</span></div>
         </div>{/* /tp-builds-inner */}
       </section>
 
@@ -1781,15 +1803,15 @@ function HomePage({ onNav }) {
           <div>
             <div className="tp-footer-col-ttl">Menu</div>
             <ul className="tp-footer-menu">
-              <li><a onClick={() => onNav("packages")}>Servicing Packages</a></li>
-              <li><a onClick={() => onNav("full-service")}>Full-Service (Full-sus)</a></li>
-              <li><a onClick={() => onNav("bike-build")}>Custom Bike-Build</a></li>
-              <li><a onClick={() => onNav("wheel-build")}>Custom Wheel-Build</a></li>
-              <li><a onClick={() => onNav("training")}>MTB Training & Guiding</a></li>
-              <li><a onClick={() => onNav("service-request")} style={{ color:"#C8FF00" }}>Book a Service →</a></li>
-              <li><a onClick={() => onNav("directions")}>Directions</a></li>
+              <li><a onClick={() => navigate(toPath("packages"))}>Servicing Packages</a></li>
+              <li><a onClick={() => navigate(toPath("full-service"))}>Full-Service (Full-sus)</a></li>
+              <li><a onClick={() => navigate(toPath("bike-build"))}>Custom Bike-Build</a></li>
+              <li><a onClick={() => navigate(toPath("wheel-build"))}>Custom Wheel-Build</a></li>
+              <li><a onClick={() => navigate(toPath("training"))}>MTB Training & Guiding</a></li>
+              <li><a onClick={() => navigate(toPath("service-request"))} style={{ color:"#C8FF00" }}>Book a Service →</a></li>
+              <li><a onClick={() => navigate(toPath("directions"))}>Directions</a></li>
               <li><a href="https://trailplus.sg/#brands" target="_blank" rel="noreferrer">Brands</a></li>
-              <li><a onClick={() => onNav("service-request")}>Contact Us</a></li>
+              <li><a onClick={() => navigate(toPath("service-request"))}>Contact Us</a></li>
             </ul>
           </div>
           <div>
@@ -1809,19 +1831,20 @@ function HomePage({ onNav }) {
 }
 
 /* ─── MENU ─── */
-function Menu({ open, onClose, onNav }) {
+function Menu({ open, onClose }) {
+  const navigate = useNavigate();
   const [svcOpen, setSvcOpen] = useState(false);
 
   const subPages = [
-    { label:"Bike Servicing Packages", page:"packages" },
-    { label:"Full-Service (Full-sus MTB)", page:"full-service" },
-    { label:"Custom Bike-Build", page:"bike-build" },
-    { label:"Custom Wheel-Build", page:"wheel-build" },
-    { label:"MTB Training & Guiding", page:"training" },
-    { label:"Book a Service", page:"service-request" },
+    { label:"Bike Servicing Packages",    path:"/servicing-packages" },
+    { label:"Full-Service (Full-sus MTB)", path:"/full-service" },
+    { label:"Custom Bike-Build",           path:"/custom-builds" },
+    { label:"Custom Wheel-Build",          path:"/custom-wheel-build" },
+    { label:"MTB Training & Guiding",      path:"/raw-epics" },
+    { label:"Book a Service",              path:"/servicing-request" },
   ];
 
-  const navTo = (page) => { onNav(page); onClose(); setSvcOpen(false); };
+  const navTo = (path) => { navigate(path); onClose(); setSvcOpen(false); };
 
   return (
     <>
@@ -1835,7 +1858,7 @@ function Menu({ open, onClose, onNav }) {
         <div className="tp-menu-section">
           <div className="tp-menu-section-label">Navigation</div>
 
-          <div className="tp-menu-item" onClick={() => navTo("home")}>
+          <div className="tp-menu-item" onClick={() => navTo("/")}>
             <span className="tp-menu-item-label">Home</span>
             <span className="tp-menu-item-arrow">→</span>
           </div>
@@ -1848,7 +1871,7 @@ function Menu({ open, onClose, onNav }) {
           {svcOpen && (
             <div className="tp-menu-sub">
               {subPages.map(sp => (
-                <div key={sp.page} className="tp-menu-sub-item" onClick={() => navTo(sp.page)}>
+                <div key={sp.path} className="tp-menu-sub-item" onClick={() => navTo(sp.path)}>
                   <div className="tp-menu-sub-dot" />
                   <span className="tp-menu-sub-label">{sp.label}</span>
                 </div>
@@ -1868,13 +1891,13 @@ function Menu({ open, onClose, onNav }) {
             <span className="tp-menu-item-label">Contact Us</span>
             <span className="tp-menu-item-arrow">→</span>
           </div>
-          <div className="tp-menu-item" onClick={() => navTo("directions")}>
+          <div className="tp-menu-item" onClick={() => navTo("/directions")}>
             <span className="tp-menu-item-label">Directions</span>
             <span className="tp-menu-item-arrow">→</span>
           </div>
         </div>
 
-        <button className="tp-menu-cta" onClick={() => navTo("service-request")}>
+        <button className="tp-menu-cta" onClick={() => navTo("/servicing-request")}>
           BOOK A SERVICE <span>→</span>
         </button>
       </div>
@@ -1884,42 +1907,28 @@ function Menu({ open, onClose, onNav }) {
 
 /* ─── MAIN APP ─── */
 export default function TrailPlusApp() {
-  const [page, setPage] = useState("home");
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const navTo = (p) => { setPage(p); window.scrollTo?.(0, 0); };
-
-  const renderPage = () => {
-    switch (page) {
-      case "packages":         return <PageServicePackages onBack={() => navTo("home")} onNav={navTo} />;
-      case "full-service":     return <PageFullService onBack={() => navTo("home")} onNav={navTo} />;
-      case "bike-build":       return <PageBikeBuild onBack={() => navTo("home")} onNav={navTo} />;
-      case "wheel-build":      return <PageWheelBuild onBack={() => navTo("home")} />;
-      case "training":         return <PageTraining onBack={() => navTo("home")} onNav={navTo} />;
-      case "service-request":  return <PageServiceRequest onBack={() => navTo("home")} />;
-      case "directions":       return <PageDirections onBack={() => navTo("home")} />;
-      default:                 return <HomePage onNav={navTo} />;
-    }
-  };
 
   return (
     <div style={{ background: "#050505", minHeight:"100vh" }}>
       <style>{CSS}</style>
+      <ScrollToTop />
       <div className="tp">
         {/* NAV */}
         <nav className="tp-nav">
-          <div className="tp-nav-logo" onClick={() => navTo("home")}>
+          <div className="tp-nav-logo" onClick={() => navigate("/")}>
             <img src="data:image/png;base64,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" alt="TRAIL+" style={{ height:"28px", width:"auto", display:"block", background:"transparent", mixBlendMode:"lighten" }} />
             <div className="tp-logo-sub">MTB PERFORMANCE LAB</div>
           </div>
           <div className="tp-nav-links" style={{display:"none"}}>
-            <span className="tp-nav-link" onClick={() => navTo("packages")}>Servicing</span>
-            <span className="tp-nav-link" onClick={() => navTo("full-service")}>Full Service</span>
-            <span className="tp-nav-link" onClick={() => navTo("bike-build")}>Custom Builds</span>
-            <span className="tp-nav-link" onClick={() => navTo("wheel-build")}>Wheel Builds</span>
-            <span className="tp-nav-link" onClick={() => navTo("training")}>Training</span>
-            <span className="tp-nav-link" onClick={() => navTo("directions")}>Directions</span>
-            <button className="tp-nav-cta" onClick={() => navTo("service-request")}>BOOK NOW</button>
+            <span className="tp-nav-link" onClick={() => navigate("/servicing-packages")}>Servicing</span>
+            <span className="tp-nav-link" onClick={() => navigate("/full-service")}>Full Service</span>
+            <span className="tp-nav-link" onClick={() => navigate("/custom-builds")}>Custom Builds</span>
+            <span className="tp-nav-link" onClick={() => navigate("/custom-wheel-build")}>Wheel Builds</span>
+            <span className="tp-nav-link" onClick={() => navigate("/raw-epics")}>Training</span>
+            <span className="tp-nav-link" onClick={() => navigate("/directions")}>Directions</span>
+            <button className="tp-nav-cta" onClick={() => navigate("/servicing-request")}>BOOK NOW</button>
           </div>
           <div className="tp-ham" onClick={() => setMenuOpen(true)}>
             <span /><span /><span />
@@ -1927,10 +1936,20 @@ export default function TrailPlusApp() {
         </nav>
 
         {/* MENU */}
-        <Menu open={menuOpen} onClose={() => setMenuOpen(false)} onNav={navTo} />
+        <Menu open={menuOpen} onClose={() => setMenuOpen(false)} />
 
         {/* PAGE CONTENT */}
-        {renderPage()}
+        <Routes>
+          <Route path="/"                   element={<HomePage />} />
+          <Route path="/servicing-packages" element={<PageServicePackages />} />
+          <Route path="/full-service"       element={<PageFullService />} />
+          <Route path="/custom-builds"      element={<PageBikeBuild />} />
+          <Route path="/custom-wheel-build" element={<PageWheelBuild />} />
+          <Route path="/raw-epics"          element={<PageTraining />} />
+          <Route path="/servicing-request"  element={<PageServiceRequest />} />
+          <Route path="/directions"         element={<PageDirections />} />
+          <Route path="*"                   element={<HomePage />} />
+        </Routes>
 
         {/* MESSENGER FLOAT BUTTON */}
         <a
