@@ -560,6 +560,7 @@ const BUILD_IMGS = [
   "https://res.cloudinary.com/dhumj7ari/image/upload/q_auto/f_auto/service-suspension_n3iohn",
   "https://res.cloudinary.com/dhumj7ari/image/upload/q_auto/f_auto/service-wheel-build_xxqqpf",
   "https://res.cloudinary.com/dhumj7ari/image/upload/q_auto/f_auto/service-frame-protection_lvnqfc",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/q_auto/f_auto/service-custom-build-6_s3lu6n",
 ];
 
 const WHEEL_IMGS = [
