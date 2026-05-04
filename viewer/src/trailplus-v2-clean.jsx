@@ -555,12 +555,11 @@ const TESTS = [
 ];
 
 const BUILD_IMGS = [
-  "https://trailplus.sg/wp-content/uploads/2020/06/20200529_173035-1024x1024.jpg",
-  "https://trailplus.sg/wp-content/uploads/2020/06/20200529_173259-1024x1024.jpg",
-  "https://trailplus.sg/wp-content/uploads/2020/05/20200523_133522-1024x1024.jpg",
-  "https://trailplus.sg/wp-content/uploads/2020/05/20200523_133638-1024x1024.jpg",
-  "https://trailplus.sg/wp-content/uploads/2020/06/20200529_172953-1024x1024.jpg",
-  "https://trailplus.sg/wp-content/uploads/2020/05/20200523_134104-1024x1024.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/q_auto/f_auto/service-performance_gc1psf",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/q_auto/f_auto/service-custom-build_zqyikm",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/q_auto/f_auto/service-suspension_n3iohn",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/q_auto/f_auto/service-wheel-build_xxqqpf",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/q_auto/f_auto/service-frame-protection_lvnqfc",
 ];
 
 const WHEEL_IMGS = [
