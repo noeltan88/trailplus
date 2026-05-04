@@ -206,10 +206,10 @@ html{-webkit-text-size-adjust:100%;}
 .tp-svc-link{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;color:${L};display:flex;align-items:center;gap:0.4rem;}
 .tp-svc-carousel{overflow:hidden;}
 .tp-svc-track{display:flex;transition:transform 300ms ease;will-change:transform;}
-.tp-svc-track .tp-svc-card{flex:0 0 100%;min-width:100%;margin:0;}
+.tp-svc-slide{flex-shrink:0;width:100%;}
 .tp-test-single{overflow:hidden;}
 .tp-test-track{display:flex;transition:transform 300ms ease;will-change:transform;}
-.tp-test-track .tp-test-card{flex:0 0 100%;min-width:100%;}
+.tp-test-slide{flex-shrink:0;width:100%;}
 .tp-dots{display:flex;justify-content:center;gap:0.4rem;padding:0.5rem 0 0.2rem;}
 .tp-dot-on{width:18px;height:6px;background:${L};border-radius:3px;}
 .tp-dot-off{width:6px;height:6px;background:#2a2a2a;border-radius:50%;cursor:pointer;}
@@ -1336,16 +1336,18 @@ function HomePage({ onNav }) {
         >
           <div className="tp-svc-track" style={{ transform:`translateX(-${activeSvc * 100}%)` }}>
             {SVCS.map((svc, i) => (
-              <div key={svc.num} className="tp-svc-card" onClick={() => onNav(svc.page)}>
-                <div className="tp-svc-img">
-                  <img src={BUILD_IMGS[i % BUILD_IMGS.length]} alt={svc.name} onError={e => e.target.style.display="none"} />
-                  <div className="tp-svc-num-tag">{svc.num}</div>
-                </div>
-                <div className="tp-svc-body">
-                  <div className="tp-svc-num-lbl">{svc.num}</div>
-                  <div className="tp-svc-name">{svc.name.replace("\n"," ")}</div>
-                  <div className="tp-svc-desc">{svc.desc}</div>
-                  <div className="tp-svc-link">LEARN MORE <span>→</span></div>
+              <div key={svc.num} className="tp-svc-slide">
+                <div className="tp-svc-card" onClick={() => onNav(svc.page)}>
+                  <div className="tp-svc-img">
+                    <img src={BUILD_IMGS[i % BUILD_IMGS.length]} alt={svc.name} onError={e => e.target.style.display="none"} />
+                    <div className="tp-svc-num-tag">{svc.num}</div>
+                  </div>
+                  <div className="tp-svc-body">
+                    <div className="tp-svc-num-lbl">{svc.num}</div>
+                    <div className="tp-svc-name">{svc.name.replace("\n"," ")}</div>
+                    <div className="tp-svc-desc">{svc.desc}</div>
+                    <div className="tp-svc-link">LEARN MORE <span>→</span></div>
+                  </div>
                 </div>
               </div>
             ))}
@@ -1447,13 +1449,15 @@ function HomePage({ onNav }) {
           >
             <div className="tp-test-track" style={{ transform:`translateX(-${activeTest * 100}%)` }}>
               {TESTS.map((t, i) => (
-                <div key={i} className="tp-test-card">
-                  <div className="tp-test-text">{t.q}</div>
-                  <div className="tp-test-author">
-                    <div className="tp-test-ava">{t.ava}</div>
-                    <div>
-                      <div className="tp-test-name">{t.name}</div>
-                      <div className="tp-test-role">{t.role}</div>
+                <div key={i} className="tp-test-slide">
+                  <div className="tp-test-card">
+                    <div className="tp-test-text">{t.q}</div>
+                    <div className="tp-test-author">
+                      <div className="tp-test-ava">{t.ava}</div>
+                      <div>
+                        <div className="tp-test-name">{t.name}</div>
+                        <div className="tp-test-role">{t.role}</div>
+                      </div>
                     </div>
                   </div>
                 </div>
