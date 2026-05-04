@@ -125,6 +125,9 @@ html{-webkit-text-size-adjust:100%;}
 .tp-training-links{display:flex;flex-direction:column;gap:0.6rem;}
 .tp-training-link{display:flex;align-items:center;gap:0.7rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;letter-spacing:0.06em;text-transform:uppercase;color:#f0f0f0;text-decoration:none;padding:0.8rem 1rem;border:1px solid ${BR};border-radius:2px;transition:border-color 0.2s,color 0.2s;}
 .tp-training-link:hover{border-color:${L};color:${L};}
+.tp-epics-gallery{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:1.5rem;}
+.tp-epics-cell{background:${CARD};overflow:hidden;aspect-ratio:1;}
+.tp-epics-cell img{width:100%;height:100%;object-fit:cover;display:block;opacity:0.88;}
 
 /* HOME */
 .tp-hero{position:relative;min-height:520px;display:flex;flex-direction:column;justify-content:flex-end;padding:2rem 1.3rem 2rem;overflow:hidden;}
@@ -371,6 +374,9 @@ html{-webkit-text-size-adjust:100%;}
   /* WHEEL BUILD */
   .tp-wheel-factors{grid-template-columns:repeat(4,1fr);gap:1rem;}
   .tp-wheel-grid{grid-template-columns:repeat(4,1fr);}
+
+  /* RAW EPICS GALLERY */
+  .tp-epics-gallery{grid-template-columns:repeat(3,1fr);gap:4px;}
 }
 
 @media(min-width:1440px){
@@ -399,6 +405,15 @@ html{-webkit-text-size-adjust:100%;}
 `;
 
 /* ─── DATA ─── */
+const RAW_EPICS_IMGS = [
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777884661/IMG_0141-300x300_acb0eh.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777884662/IMG_4409-767x1024_yxe4wg.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777884662/RileySeebeck-10-of-24-1024x683_gfu52m.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777884662/Wilson-1-1024x1024_occzud.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777884663/da82e88a-0085-4808-bd4e-f70edec346e1-768x1024_qzi78i.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777884663/updatethumb-1024x576_mqcoxo.png",
+];
+
 const SVCS = [
   { num:"01", icon:"🔧", name:"Performance\nServicing", desc:"Precision servicing and diagnostics to keep your bike performing at its best.", page:"packages" },
   { num:"02", icon:"⚙️", name:"Custom Builds", desc:"Built around your riding style, your goals, your terrain.", page:"bike-build" },
@@ -895,6 +910,14 @@ function PageTraining({ onBack }) {
           ))}
         </div>
 
+        <div className="tp-epics-gallery">
+          {RAW_EPICS_IMGS.map((src, i) => (
+            <div key={i} className="tp-epics-cell">
+              <img src={src} alt={`RAW Epics ${i + 1}`} onError={e => { e.target.parentNode.style.background = "#1e1e1e"; e.target.style.display = "none"; }} />
+            </div>
+          ))}
+        </div>
+
         <div className="tp-training-highlight">
           Wilson can be found on Singapore's local trails conducting skills classes or guided day-trips. His work also takes him abroad — guiding bespoke tours in Batam (Indonesia), the Annapurna region (Nepal), and Tasmania (Australia).
         </div>
@@ -903,7 +926,7 @@ function PageTraining({ onBack }) {
           <a href="http://www.rawepics.com/" className="tp-training-link" target="_blank" rel="noreferrer">🌐 Visit RAW Epics Website</a>
           <a href="mailto:rawepics@gmail.com" className="tp-training-link">✉️ Email Wilson — rawepics@gmail.com</a>
           <a href="https://www.surveymonkey.com/r/X3XVBFZ" className="tp-training-link" target="_blank" rel="noreferrer">📋 Fill Skills Pre-Training Questionnaire</a>
-          <a href="tel:+6591832244" className="tp-training-link">📞 +65 9183 2244</a>
+          <a href="tel:+6598784113" className="tp-training-link">📞 +65 9878 4113</a>
         </div>
       </div>
     </div>
