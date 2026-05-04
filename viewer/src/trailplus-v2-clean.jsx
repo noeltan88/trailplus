@@ -16,7 +16,7 @@ html{-webkit-text-size-adjust:100%;}
 @media(min-width:431px){.tp{box-shadow:0 0 80px rgba(0,0,0,0.9);}}
 
 /* NAV */
-.tp-nav{position:fixed;top:0;left:0;right:0;z-index:9999;background-color:rgba(10,10,10,0.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid ${BR};padding:0.8rem 1.2rem;display:flex;align-items:center;justify-content:space-between;transition:background-color 0.3s ease;}
+.tp-nav{position:fixed;top:0;left:0;right:0;z-index:9999;background-color:rgba(10,10,10,0.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:none;box-shadow:none;padding:0.8rem 1.2rem;display:flex;align-items:center;justify-content:space-between;transition:background-color 0.3s ease;}
 .tp-nav--scrolled{background-color:rgba(10,10,10,0.98)!important;}
 .tp-nav-logo{display:flex;flex-direction:column;gap:1px;cursor:pointer;background:transparent;}
 .tp-logo-main{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.45rem;letter-spacing:0.05em;color:#fff;line-height:1;}
