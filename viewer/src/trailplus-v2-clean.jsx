@@ -297,12 +297,17 @@ html{-webkit-text-size-adjust:100%;}
 
   /* SERVICES */
   .tp-home-services{padding:5rem 6vw;}
-  .tp-home-services-hdr{padding:0;max-width:1320px;margin:0 auto;}
+  .tp-services-inner{max-width:1320px;margin:0 auto;}
+  .tp-home-services-hdr{padding:0;}
   .tp-sec-title-lg{font-size:3rem;}
   .tp-svc-carousel{display:none!important;}
-  .tp-svc-desktop-grid{display:grid!important;grid-template-columns:repeat(3,1fr);gap:0;padding:0;max-width:1320px;margin:2rem auto 0;}
-  .tp-svc-card{margin:0;border-radius:0;border-top:none;border-left:none;border-bottom:none;border-right:1px solid #1e1e1e;}
+  .tp-svc-desktop-grid{display:grid!important;grid-template-columns:repeat(6,1fr);gap:0;padding:0;margin-top:2rem;}
+  .tp-svc-desktop-grid .tp-svc-card:nth-child(-n+3){grid-column:span 2;border-bottom:1px solid #1e1e1e;}
+  .tp-svc-desktop-grid .tp-svc-card:nth-child(n+4){grid-column:span 3;}
+  .tp-svc-card{margin:0;border-radius:0;border-top:none;border-left:none;border-bottom:none;border-right:1px solid #1e1e1e;display:flex;flex-direction:column;}
   .tp-svc-card:last-child{border-right:none;}
+  .tp-svc-desktop-grid .tp-svc-card:nth-child(3){border-right:none;}
+  .tp-svc-body{flex:1;}
   .tp-svc-img{height:260px;}
   .tp-svc-name{font-size:1.7rem;}
   .tp-svc-desc{font-size:0.85rem;}
@@ -392,7 +397,6 @@ html{-webkit-text-size-adjust:100%;}
   .tp-trust-title{font-size:3.5rem;}
   .tp-home-services{padding:6rem 8vw;}
   .tp-home-services-hdr{padding:0;}
-  .tp-svc-desktop-grid{max-width:none;padding:0;}
   .tp-process{padding:6rem 8vw;}
   .tp-process-title{font-size:4.5rem;}
   .tp-cta{padding:6rem 8vw;}
@@ -1035,6 +1039,7 @@ function HomePage({ onNav }) {
 
       {/* SERVICES */}
       <section className="tp-home-services">
+        <div className="tp-services-inner">
         <div className="tp-home-services-hdr">
           <div className="tp-sec-tag">What We Do</div>
           <div className="tp-sec-title-lg">MORE THAN JUST<br />A BIKE SHOP</div>
@@ -1077,6 +1082,7 @@ function HomePage({ onNav }) {
             </div>
           ))}
         </div>
+        </div>{/* /tp-services-inner */}
       </section>
 
       {/* PROCESS */}
