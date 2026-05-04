@@ -275,6 +275,15 @@ html{-webkit-text-size-adjust:100%;}
 .tp-insta-cell{background:${CARD};overflow:hidden;}
 .tp-insta-btn{display:flex;align-items:center;justify-content:center;gap:0.5rem;background:transparent;color:#fff;padding:0.9rem 1.2rem;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid ${BR};border-radius:2px;cursor:pointer;text-decoration:none;width:100%;}
 
+/* BRANDS */
+.tp-brands{background:#0d0d0d;padding:2rem 1.3rem;}
+.tp-brands-inner{max-width:1320px;margin:0 auto;}
+.tp-brands-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.6rem;margin-top:1.2rem;}
+.tp-brand-logo{display:flex;align-items:center;justify-content:center;padding:1.1rem 0.8rem;border:1px solid ${BR};border-radius:2px;background:${CARD};transition:border-color 0.2s,box-shadow 0.2s,transform 0.2s;cursor:default;}
+.tp-brand-logo:hover{border-color:#C8FF00;box-shadow:0 0 14px rgba(200,255,0,0.2);transform:scale(1.04);}
+.tp-brand-logo img{width:100%;max-height:44px;object-fit:contain;filter:grayscale(100%) brightness(0.6);transition:filter 0.25s;}
+.tp-brand-logo:hover img{filter:grayscale(0%) brightness(1);}
+
 /* GALLERY */
 .tp-gallery-desktop{display:none;}
 
@@ -332,6 +341,8 @@ html{-webkit-text-size-adjust:100%;}
   .tp-builds{padding:2.5rem 3rem;}
   .tp-test{padding:2.5rem 3rem;}
   .tp-insta{padding:2.5rem 3rem;}
+  .tp-brands{padding:2.5rem 3rem;}
+  .tp-brands-grid{grid-template-columns:repeat(4,1fr);}
 }
 
 @media(min-width:1024px){
@@ -424,6 +435,11 @@ html{-webkit-text-size-adjust:100%;}
   .tp-insta-grid{grid-template-columns:repeat(6,1fr);grid-template-rows:none;height:220px;}
   .tp-insta-handle{font-size:2.8rem;}
   .tp-insta-btn{max-width:320px;}
+
+  /* BRANDS */
+  .tp-brands{padding:5rem 6vw;}
+  .tp-brands-grid{grid-template-columns:repeat(6,1fr);gap:1rem;}
+  .tp-brand-logo{padding:1.4rem 1rem;}
 
   /* FOOTER */
   .tp-footer{padding:4.5rem 6vw 2.5rem;}
@@ -1284,38 +1300,35 @@ function PageDirections({ onBack }) {
   // ── Cloudinary URLs (Trail+/Directions) ─────────────────────────────────
   // 5 images confirmed in Cloudinary; remaining slots are null (placeholder).
   const RULE_IMGS = [
-    { src: null,                                                    label: "NO GLASS DOOR" }, // TODO: no_glass_door-150x150.png
-    { src: null,                                                    label: "USE THE LIFTS"  }, // TODO: lifts-1.png
-    { src: null,                                                    label: "NO RAMP"        }, // TODO: no_ramp.png
+    { src: `${CL}/v1777895291/no_glass_door-150x150_fcgkgv.png`,  label: "NO GLASS DOOR" },
+    { src: `${CL}/v1777895290/lifts-1_jbn8oq.png`,                label: "USE THE LIFTS"  },
+    { src: `${CL}/v1777895291/no_ramp_gvnv9h.png`,                label: "NO RAMP"        },
   ];
   const STEP_IMGS = [
-    null,                                                           // TODO: 01-1-768x518.jpg
+    `${CL}/v1777895291/01-1-768x518_suikyu.jpg`,
     `${CL}/v1777893354/02-1-768x674_iww0df.jpg`,
-    null,                                                           // TODO: 03-768x546.jpg
+    `${CL}/v1777895291/03-768x546_zdbuji.jpg`,
   ];
   const ROOF_IMGS = [
-    null,                                                           // TODO: 04-768x552.jpg
-    null,                                                           // TODO: 05-768x491.jpg
+    `${CL}/v1777895290/04-768x552_cbzigk.jpg`,
+    `${CL}/v1777895289/05-768x491_nndpg9.jpg`,
     `${CL}/v1777893355/06-768x516_hdkgzw.jpg`,
     `${CL}/v1777893395/07-768x520_moblm2.jpg`,
-    null,                                                           // TODO: 08-768x536.jpg
-    null,                                                           // TODO: 09-768x521.jpg
-    null,                                                           // TODO: 10-573x1024.jpg
-    null,                                                           // TODO: 11-768x675.jpg
+    `${CL}/v1777895289/08-768x536_xjkovj.jpg`,
+    `${CL}/v1777895290/09-768x521_x7ruog.jpg`,
+    `${CL}/v1777895290/10-573x1024_yt8g3e.jpg`,
+    `${CL}/v1777895291/11-768x675_hn6mgm.jpg`,
   ];
   const REAR_IMGS = [
     `${CL}/v1777894751/13-768x504_ynqcrz.jpg`,
     `${CL}/v1777893354/14-768x646_ijcsaj.jpg`,
   ];
 
-  // Full-width image — shows dark placeholder if src is null
+  // Full-width image
   const DirImg = ({ src, alt }) => (
     <div style={{ width:"100%", background:"#141414", borderRadius:"2px", overflow:"hidden", lineHeight:0 }}>
-      {src
-        ? <img src={src} alt={alt} style={{ width:"100%", display:"block" }}
-            onError={e => { e.target.parentNode.style.background="#1a1a1a"; e.target.style.display="none"; }} />
-        : <div style={{ height:"160px", background:"#141414" }} />
-      }
+      <img src={src} alt={alt} style={{ width:"100%", display:"block" }}
+        onError={e => { e.target.parentNode.style.background="#1a1a1a"; e.target.style.display="none"; }} />
     </div>
   );
 
@@ -1703,6 +1716,36 @@ function HomePage({ onNav }) {
         </div>
         <a href="https://instagram.com/trailplus" className="tp-insta-btn" target="_blank" rel="noreferrer">FOLLOW US ON INSTAGRAM →</a>
         </div>{/* /tp-insta-inner */}
+      </section>
+
+      {/* BRANDS */}
+      <section className="tp-brands">
+        <div className="tp-brands-inner">
+          <div className="tp-sec-tag">OUR BRANDS</div>
+          <div className="tp-sec-title-lg">BRANDS WE<br />WORK WITH</div>
+          <div className="tp-accent-line" />
+          <div className="tp-brands-grid">
+            {[
+              { name:"Santa Cruz",  url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895293/Santa-Cruz_kxzsi7.png" },
+              { name:"SRAM",        url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895294/sram_mvpy31.png" },
+              { name:"Shimano",     url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895294/shimano_ddpuig.png" },
+              { name:"Factor",      url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895295/FACTOR_Logo_prdvpk.png" },
+              { name:"TRP",         url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895293/TRP_d64w1f.png" },
+              { name:"KS",          url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895294/KS-e1707283950620_qaby6w.png" },
+              { name:"Funn",        url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895294/funn_ltzt6y.png" },
+              { name:"Chromag",     url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895296/Chromag_jwl7dz.png" },
+              { name:"Lezyne",      url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895298/Lezyne_h3veqy.png" },
+              { name:"Pirelli",     url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895295/Pirelli_giwyoq.png" },
+              { name:"Minoura",     url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895295/Minoura_dgs39y.png" },
+              { name:"Onyx",        url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895342/HiRes-Onyx-Logo_niwnqn.png" },
+            ].map(b => (
+              <div key={b.name} className="tp-brand-logo">
+                <img src={b.url} alt={b.name}
+                  onError={e => { e.target.style.display="none"; }} />
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* FOOTER */}
