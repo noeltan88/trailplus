@@ -282,6 +282,9 @@ html{-webkit-text-size-adjust:100%;}
 .tp-insta-cell{background:${CARD};overflow:hidden;}
 .tp-insta-btn{display:flex;align-items:center;justify-content:center;gap:0.5rem;background:transparent;color:#fff;padding:0.9rem 1.2rem;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid ${BR};border-radius:2px;cursor:pointer;text-decoration:none;width:100%;}
 
+/* GALLERY */
+.tp-gallery-desktop{display:none;}
+
 /* FOOTER */
 .tp-footer{background:${CARD};border-top:1px solid ${BR};padding:2rem 1.3rem 1.5rem;}
 .tp-footer-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.65rem;letter-spacing:0.05em;color:#fff;line-height:1;}
@@ -453,6 +456,10 @@ html{-webkit-text-size-adjust:100%;}
   .tp-fs-inner{max-width:1320px;margin:0 auto;}
   .tp-fs-desktop-grid{display:grid!important;grid-template-columns:repeat(2,1fr);gap:2.5rem;align-items:start;}
   .tp-gallery-main{width:100%!important;height:400px!important;aspect-ratio:unset!important;}
+  .tp-gallery-mobile{display:none!important;}
+  .tp-gallery-desktop{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:1.1rem 0 0.4rem;}
+  .tp-gallery-desktop-cell{height:220px;overflow:hidden;border-radius:2px;background:#0d0d0d;}
+  .tp-gallery-desktop-cell img{width:100%;height:100%;object-fit:cover;display:block;opacity:0.92;}
   /* Directions 1024px */
   .tp-dir-map{height:460px;}
   .tp-dir-section-title,.tp-dir-rack-title{font-size:3rem;}
@@ -675,48 +682,64 @@ function GallerySlider({ images }) {
   const [active, setActive] = useState(0);
   if (!images || images.length === 0) return null;
   return (
-    <div style={{ margin:"1.1rem 0 0.4rem" }}>
-      {/* Main image */}
-      <div className="tp-gallery-main" style={{ position:"relative", width:"100%", aspectRatio:"4/3", background:"#0d0d0d", borderRadius:"3px", overflow:"hidden", border:"1px solid #1e1e1e" }}>
-        <img
-          src={images[active]}
-          alt={`photo ${active + 1}`}
-          referrerPolicy="no-referrer"
-          crossOrigin="anonymous"
-          style={{ width:"100%", height:"100%", objectFit:"cover", display:"block", opacity:0.92 }}
-          onError={e => { e.target.parentNode.style.background="#1a1a1a"; e.target.style.display="none"; }}
-        />
+    <>
+      {/* ── Mobile: carousel (hidden on desktop via CSS) ── */}
+      <div className="tp-gallery-mobile" style={{ margin:"1.1rem 0 0.4rem" }}>
+        <div className="tp-gallery-main" style={{ position:"relative", width:"100%", aspectRatio:"4/3", background:"#0d0d0d", borderRadius:"3px", overflow:"hidden", border:"1px solid #1e1e1e" }}>
+          <img
+            src={images[active]}
+            alt={`photo ${active + 1}`}
+            referrerPolicy="no-referrer"
+            crossOrigin="anonymous"
+            style={{ width:"100%", height:"100%", objectFit:"cover", display:"block", opacity:0.92 }}
+            onError={e => { e.target.parentNode.style.background="#1a1a1a"; e.target.style.display="none"; }}
+          />
+          {images.length > 1 && (
+            <>
+              <button
+                onClick={() => setActive(p => (p - 1 + images.length) % images.length)}
+                style={{ position:"absolute", left:"0.55rem", top:"50%", transform:"translateY(-50%)", background:"rgba(0,0,0,0.7)", border:"1px solid #2a2a2a", borderRadius:"50%", width:"34px", height:"34px", color:"#C8FF00", fontSize:"1.1rem", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", lineHeight:1, padding:0 }}
+              >‹</button>
+              <button
+                onClick={() => setActive(p => (p + 1) % images.length)}
+                style={{ position:"absolute", right:"0.55rem", top:"50%", transform:"translateY(-50%)", background:"rgba(0,0,0,0.7)", border:"1px solid #2a2a2a", borderRadius:"50%", width:"34px", height:"34px", color:"#C8FF00", fontSize:"1.1rem", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", lineHeight:1, padding:0 }}
+              >›</button>
+            </>
+          )}
+          <div style={{ position:"absolute", bottom:"0.55rem", right:"0.65rem", background:"rgba(0,0,0,0.72)", padding:"0.18rem 0.5rem", borderRadius:"2px", fontFamily:"'DM Mono',monospace", fontSize:"0.58rem", color:"#C8FF00", letterSpacing:"0.1em" }}>
+            {active + 1} / {images.length}
+          </div>
+        </div>
         {images.length > 1 && (
-          <>
-            <button
-              onClick={() => setActive(p => (p - 1 + images.length) % images.length)}
-              style={{ position:"absolute", left:"0.55rem", top:"50%", transform:"translateY(-50%)", background:"rgba(0,0,0,0.7)", border:"1px solid #2a2a2a", borderRadius:"50%", width:"34px", height:"34px", color:"#C8FF00", fontSize:"1.1rem", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", lineHeight:1, padding:0 }}
-            >‹</button>
-            <button
-              onClick={() => setActive(p => (p + 1) % images.length)}
-              style={{ position:"absolute", right:"0.55rem", top:"50%", transform:"translateY(-50%)", background:"rgba(0,0,0,0.7)", border:"1px solid #2a2a2a", borderRadius:"50%", width:"34px", height:"34px", color:"#C8FF00", fontSize:"1.1rem", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", lineHeight:1, padding:0 }}
-            >›</button>
-          </>
+          <div style={{ display:"flex", gap:"4px", marginTop:"5px", overflowX:"auto", paddingBottom:"3px" }}>
+            {images.map((src, i) => (
+              <div
+                key={i}
+                onClick={() => setActive(i)}
+                style={{ flexShrink:0, width:"54px", height:"42px", borderRadius:"2px", overflow:"hidden", border: i === active ? "2px solid #C8FF00" : "2px solid transparent", cursor:"pointer", opacity: i === active ? 1 : 0.4, transition:"opacity 0.2s, border-color 0.2s" }}
+              >
+                <img src={src} alt="" referrerPolicy="no-referrer" crossOrigin="anonymous" style={{ width:"100%", height:"100%", objectFit:"cover", display:"block" }} onError={e => { e.target.parentNode.style.background="#1a1a1a"; e.target.style.display="none"; }} />
+              </div>
+            ))}
+          </div>
         )}
-        <div style={{ position:"absolute", bottom:"0.55rem", right:"0.65rem", background:"rgba(0,0,0,0.72)", padding:"0.18rem 0.5rem", borderRadius:"2px", fontFamily:"'DM Mono',monospace", fontSize:"0.58rem", color:"#C8FF00", letterSpacing:"0.1em" }}>
-          {active + 1} / {images.length}
-        </div>
       </div>
-      {/* Thumbnail strip */}
-      {images.length > 1 && (
-        <div style={{ display:"flex", gap:"4px", marginTop:"5px", overflowX:"auto", paddingBottom:"3px" }}>
-          {images.map((src, i) => (
-            <div
-              key={i}
-              onClick={() => setActive(i)}
-              style={{ flexShrink:0, width:"54px", height:"42px", borderRadius:"2px", overflow:"hidden", border: i === active ? "2px solid #C8FF00" : "2px solid transparent", cursor:"pointer", opacity: i === active ? 1 : 0.4, transition:"opacity 0.2s, border-color 0.2s" }}
-            >
-              <img src={src} alt="" referrerPolicy="no-referrer" crossOrigin="anonymous" style={{ width:"100%", height:"100%", objectFit:"cover", display:"block" }} onError={e => { e.target.parentNode.style.background="#1a1a1a"; e.target.style.display="none"; }} />
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+
+      {/* ── Desktop: 3-column grid, max 2 rows (hidden on mobile via CSS) ── */}
+      <div className="tp-gallery-desktop">
+        {images.slice(0, 6).map((src, i) => (
+          <div key={i} className="tp-gallery-desktop-cell">
+            <img
+              src={src}
+              alt={`photo ${i + 1}`}
+              referrerPolicy="no-referrer"
+              crossOrigin="anonymous"
+              onError={e => { e.target.parentNode.style.background="#1a1a1a"; e.target.style.display="none"; }}
+            />
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
 
