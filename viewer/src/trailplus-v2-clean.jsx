@@ -1889,7 +1889,7 @@ function Menu({ open, onClose }) {
             <span className="tp-menu-item-label">Follow Us</span>
             <span className="tp-menu-item-arrow">→</span>
           </div>
-          <div className="tp-menu-item" onClick={() => { window.open("https://trailplus.sg/#contact_us","_blank"); onClose(); }}>
+          <div className="tp-menu-item" onClick={() => { window.open("https://wa.me/6591832244?text=Hi%20Trail%2B!%20I'd%20like%20to%20enquire%20about%20your%20services.","_blank"); onClose(); }}>
             <span className="tp-menu-item-label">Contact Us</span>
             <span className="tp-menu-item-arrow">→</span>
           </div>
