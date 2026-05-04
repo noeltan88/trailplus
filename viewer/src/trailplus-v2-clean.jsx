@@ -203,10 +203,10 @@ html{-webkit-text-size-adjust:100%;}
 .tp-trust-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin-bottom:1.4rem;}
 .tp-ts{text-align:center;}
 .tp-ts-icon{font-size:1.3rem;color:${L};margin-bottom:0.3rem;}
-.tp-ts-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.2rem;color:#fff;line-height:1;}
-.tp-ts-lbl{font-family:'DM Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;color:#555;line-height:1.4;}
+.tp-ts-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.2rem;color:#fff;line-height:1;margin-bottom:0.45rem;}
+.tp-ts-lbl{font-family:'DM Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;color:#555;line-height:1.5;}
 .tp-divider{height:1px;background:${BR};margin:1.1rem 0;}
-.tp-trust-reviews{display:flex;gap:0.75rem;}
+.tp-trust-reviews{display:flex;gap:0.75rem;justify-content:center;}
 .tp-review{display:flex;align-items:center;gap:0.8rem;margin-bottom:0.75rem;}
 .tp-review-stars{color:${L};font-size:0.75rem;}
 .tp-review-info{font-size:0.7rem;color:#555;font-family:'DM Mono',monospace;letter-spacing:0.04em;}
@@ -1757,18 +1757,24 @@ function HomePage() {
           <div className="tp-accent-line" />
           <div className="tp-brands-grid">
             {[
-              { name:"Santa Cruz",  url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895293/Santa-Cruz_kxzsi7.png" },
-              { name:"SRAM",        url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895294/sram_mvpy31.png" },
-              { name:"Shimano",     url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895294/shimano_ddpuig.png" },
-              { name:"Factor",      url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895295/FACTOR_Logo_prdvpk.png" },
-              { name:"TRP",         url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895293/TRP_d64w1f.png" },
-              { name:"KS",          url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895294/KS-e1707283950620_qaby6w.png" },
-              { name:"Funn",        url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895294/funn_ltzt6y.png" },
-              { name:"Chromag",     url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895296/Chromag_jwl7dz.png" },
-              { name:"Lezyne",      url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895298/Lezyne_h3veqy.png" },
-              { name:"Pirelli",     url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895295/Pirelli_giwyoq.png" },
-              { name:"Minoura",     url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895295/Minoura_dgs39y.png" },
-              { name:"Onyx",        url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895342/HiRes-Onyx-Logo_niwnqn.png" },
+              { name:"Santa Cruz",        url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895293/Santa-Cruz_kxzsi7.png" },
+              { name:"SRAM",              url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895294/sram_mvpy31.png" },
+              { name:"Shimano",           url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895294/shimano_ddpuig.png" },
+              { name:"Factor",            url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895295/FACTOR_Logo_prdvpk.png" },
+              { name:"TRP",               url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895293/TRP_d64w1f.png" },
+              { name:"KS",               url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895294/KS-e1707283950620_qaby6w.png" },
+              { name:"Funn",              url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895294/funn_ltzt6y.png" },
+              { name:"Chromag",           url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895296/Chromag_jwl7dz.png" },
+              { name:"Lezyne",            url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895298/Lezyne_h3veqy.png" },
+              { name:"Pirelli",           url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895295/Pirelli_giwyoq.png" },
+              { name:"Minoura",           url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895295/Minoura_dgs39y.png" },
+              { name:"Onyx",              url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895342/HiRes-Onyx-Logo_niwnqn.png" },
+              { name:"Specialized",       url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895984/Specialized_zm9pgh.png" },
+              { name:"DVO",               url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895984/DVO_s3krcl.png" },
+              { name:"Tairin",            url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895984/Tairin_emc7hq.png" },
+              { name:"South Industries",  url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895984/SouthIndustries_Logo_de3njd.png" },
+              { name:"InvisiFrame",       url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895984/invisiframe-300x42_vnxmue.png" },
+              { name:"Granite",           url:"https://res.cloudinary.com/dhumj7ari/image/upload/v1777895985/granite_vtvmuo.png" },
             ].map(b => (
               <div key={b.name} className="tp-brand-logo">
                 <img src={b.url} alt={b.name}
