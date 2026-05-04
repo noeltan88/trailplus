@@ -748,7 +748,7 @@ function GallerySlider({ images }) {
   );
 }
 
-function PageFullService({ onBack }) {
+function PageFullService({ onBack, onNav }) {
   const sections = [
     {
       label: "Frame", icon: "🏗️",
@@ -880,7 +880,7 @@ function PageFullService({ onBack }) {
         </div>
 
         <div style={{ marginTop:"1.5rem" }}>
-          <BookBtn />
+          <BookBtn onNav={onNav} />
         </div>
         </div>{/* /tp-fs-inner */}
       </div>
@@ -1867,10 +1867,6 @@ function Menu({ open, onClose, onNav }) {
             <span className="tp-menu-item-label">Contact Us</span>
             <span className="tp-menu-item-arrow">→</span>
           </div>
-          <div className="tp-menu-item" onClick={() => { window.open("https://trailplus.sg/directions/","_blank"); onClose(); }}>
-            <span className="tp-menu-item-label">Directions</span>
-            <span className="tp-menu-item-arrow">→</span>
-          </div>
         </div>
 
         <button className="tp-menu-cta" onClick={() => navTo("service-request")}>
@@ -1891,7 +1887,7 @@ export default function TrailPlusApp() {
   const renderPage = () => {
     switch (page) {
       case "packages":         return <PageServicePackages onBack={() => navTo("home")} onNav={navTo} />;
-      case "full-service":     return <PageFullService onBack={() => navTo("home")} />;
+      case "full-service":     return <PageFullService onBack={() => navTo("home")} onNav={navTo} />;
       case "bike-build":       return <PageBikeBuild onBack={() => navTo("home")} onNav={navTo} />;
       case "wheel-build":      return <PageWheelBuild onBack={() => navTo("home")} />;
       case "training":         return <PageTraining onBack={() => navTo("home")} onNav={navTo} />;
