@@ -1490,6 +1490,7 @@ function HomePage() {
           <p className="tp-hero-desc">Expert servicing, custom builds and precision tuning for riders who take their ride seriously.</p>
           <div className="tp-hero-btns" style={{display:"flex",flexDirection:"column"}}>
             <button className="tp-home-btn-lime" onClick={() => navigate(toPath("service-request"))}>BOOK A SERVICE <span>→</span></button>
+            <a className="tp-home-btn-dark" style={{ marginTop:"0.7rem" }} href="https://wa.me/6591832244?text=Hi%20Trail%2B!%20I'd%20like%20to%20book%20a%20servicing%20appointment." target="_blank" rel="noreferrer">BOOK NOW VIA WHATSAPP <span>💬</span></a>
             <div className="tp-home-btn-dark" style={{ cursor:"pointer", marginTop:"0.7rem" }} onClick={() => navigate(toPath("bike-build"))}>BUILD YOUR BIKE <span>→</span></div>
           </div>
         </div>
