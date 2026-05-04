@@ -133,7 +133,7 @@ html{-webkit-text-size-adjust:100%;}
 .tp-hero{position:relative;min-height:520px;display:flex;flex-direction:column;justify-content:flex-end;padding:2rem 1.3rem 2rem;overflow:hidden;}
 .tp-hero-bg{position:absolute;inset:0;background:#0a0a0a;}
 .tp-hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.15) 0%,rgba(0,0,0,0.5) 45%,rgba(0,0,0,0.92) 100%);}
-.tp-hero-content{position:relative;z-index:2;}
+.tp-hero-content{position:relative;z-index:2;text-align:left;}
 .tp-hero-h1{font-family:'Barlow Condensed',sans-serif;font-size:3.2rem;font-weight:900;line-height:0.92;text-transform:uppercase;margin-bottom:1rem;letter-spacing:0.01em;}
 .tp-hero-h1 .wh{color:#fff;}
 .tp-hero-h1 .gr{color:${L};font-style:italic;}
