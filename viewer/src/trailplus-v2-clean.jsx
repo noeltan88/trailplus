@@ -1279,63 +1279,73 @@ function PageServiceRequest({ onBack }) {
 
 /* ─── DIRECTIONS PAGE ─── */
 function PageDirections({ onBack }) {
-  // ── Cloudinary URLs (Trail+/Directions folder) ──────────────────────────
-  // Images not yet in Cloudinary are marked "TODO" — swap in URL on upload.
   const CL = "https://res.cloudinary.com/dhumj7ari/image/upload";
 
-  const GOLDEN_RULES = [
-    { img: "",  title: "USE THE LIFTS"   },  // TODO: lifts-1.png
-    { img: "",  title: "NO GLASS DOOR"   },  // TODO: no_glass_door-150x150.png
-    { img: "",  title: "NO RAMP"         },  // TODO: no_ramp.png
+  // ── Cloudinary URLs (Trail+/Directions) ─────────────────────────────────
+  // 5 images confirmed in Cloudinary; remaining slots are null (placeholder).
+  const RULE_IMGS = [
+    { src: null,                                                    label: "NO GLASS DOOR" }, // TODO: no_glass_door-150x150.png
+    { src: null,                                                    label: "USE THE LIFTS"  }, // TODO: lifts-1.png
+    { src: null,                                                    label: "NO RAMP"        }, // TODO: no_ramp.png
   ];
-
-  // Steps 01–03 only
   const STEP_IMGS = [
-    "",                                                          // TODO: 01-1-768x518.jpg
-    `${CL}/v1777893354/02-1-768x674_iww0df.jpg`,               // 02
-    "",                                                          // TODO: 03-768x546.jpg
+    null,                                                           // TODO: 01-1-768x518.jpg
+    `${CL}/v1777893354/02-1-768x674_iww0df.jpg`,
+    null,                                                           // TODO: 03-768x546.jpg
   ];
-
-  // Roof-mounted racks: images 04–11
   const ROOF_IMGS = [
-    "",                                                          // TODO: 04-768x552.jpg
-    "",                                                          // TODO: 05-768x491.jpg
-    `${CL}/v1777893355/06-768x516_hdkgzw.jpg`,                 // 06
-    `${CL}/v1777893395/07-768x520_moblm2.jpg`,                 // 07
-    "",                                                          // TODO: 08-768x536.jpg
-    "",                                                          // TODO: 09-768x521.jpg
-    "",                                                          // TODO: 10-573x1024.jpg
-    "",                                                          // TODO: 11-768x675.jpg
+    null,                                                           // TODO: 04-768x552.jpg
+    null,                                                           // TODO: 05-768x491.jpg
+    `${CL}/v1777893355/06-768x516_hdkgzw.jpg`,
+    `${CL}/v1777893395/07-768x520_moblm2.jpg`,
+    null,                                                           // TODO: 08-768x536.jpg
+    null,                                                           // TODO: 09-768x521.jpg
+    null,                                                           // TODO: 10-573x1024.jpg
+    null,                                                           // TODO: 11-768x675.jpg
   ];
-
-  // Rear-mounted racks: images 13–14
   const REAR_IMGS = [
-    "",                                                          // TODO: 13-768x504.jpg
-    `${CL}/v1777893354/14-768x646_ijcsaj.jpg`,                 // 14
+    `${CL}/v1777894751/13-768x504_ynqcrz.jpg`,
+    `${CL}/v1777893354/14-768x646_ijcsaj.jpg`,
   ];
 
-  const DirImg = ({ src, alt, style = {} }) => (
-    <div style={{ background:"#111", overflow:"hidden", ...style }}>
-      {src && (
-        <img src={src} alt={alt} style={{ width:"100%", height:"100%", objectFit:"cover", display:"block" }}
-          onError={e => { e.target.parentNode.style.background="#1e1e1e"; e.target.style.display="none"; }} />
-      )}
+  // Full-width image — shows dark placeholder if src is null
+  const DirImg = ({ src, alt }) => (
+    <div style={{ width:"100%", background:"#141414", borderRadius:"2px", overflow:"hidden", lineHeight:0 }}>
+      {src
+        ? <img src={src} alt={alt} style={{ width:"100%", display:"block" }}
+            onError={e => { e.target.parentNode.style.background="#1a1a1a"; e.target.style.display="none"; }} />
+        : <div style={{ height:"160px", background:"#141414" }} />
+      }
     </div>
   );
 
+  const secTitle = {
+    fontFamily:"'Barlow Condensed',sans-serif", fontWeight:900,
+    fontSize:"1.5rem", textTransform:"uppercase", color:"#fff",
+    letterSpacing:"0.04em", margin:"0 0 1rem",
+  };
+
   return (
-    <div>
-      {/* 1 ── FIND US ── */}
+    <div style={{ background:"#0a0a0a", minHeight:"100vh" }}>
+
+      {/* Page hero */}
       <div className="tp-page-hero">
         <BackBtn onClick={onBack} />
         <div className="tp-sec-tag">Getting Here</div>
-        <div className="tp-page-title">FIND US</div>
+        <div className="tp-page-title">DIRECTIONS</div>
         <div className="tp-accent-line" />
       </div>
-      <div className="tp-section dark">
-        <div className="tp-dir-inner">
-          <div className="tp-dir-contact-item">📍 <span>50 Bukit Batok Crescent, #03-16, Midview Building, Singapore 659578</span></div>
-          <div className="tp-dir-contact-item">📞 <span>+65 9183 2244</span></div>
+
+      {/* Single-column content */}
+      <div style={{ padding:"1.8rem 1rem 4rem", maxWidth:"560px", margin:"0 auto" }}>
+
+        {/* 1 ── ADDRESS & GOOGLE MAPS ── */}
+        <div style={{ marginBottom:"2rem" }}>
+          <p style={{ fontSize:"0.9rem", color:"#ccc", lineHeight:1.75, margin:"0 0 0.25rem" }}>
+            50 Bukit Batok Crescent, #03-16,<br />
+            Midview Building, Singapore 659578
+          </p>
+          <p style={{ fontSize:"0.9rem", color:"#888", margin:"0 0 1rem" }}>+65 9183 2244</p>
           <div className="tp-dir-map">
             <iframe
               src="https://maps.google.com/maps?q=Midview+Building,+50+Bukit+Batok+Crescent,+Singapore+659578&t=&z=17&ie=UTF8&iwloc=&output=embed"
@@ -1344,84 +1354,70 @@ function PageDirections({ onBack }) {
             />
           </div>
         </div>
-      </div>
 
-      {/* 2 ── IMPORTANT NOTICE ── */}
-      <div className="tp-section surf">
-        <div className="tp-dir-inner">
+        {/* 2 ── IMPORTANT NOTICE ── */}
+        <div style={{ marginBottom:"2rem" }}>
           <div className="tp-dir-notice">
             <span className="tp-dir-notice-icon">⚠️</span>
-            <span><strong style={{ color:"#C8FF00" }}>IMPORTANT:</strong> ALL customers are to report to the guardhouse upon reaching the building premise.</span>
+            <span>
+              <strong style={{ color:"#C8FF00" }}>IMPORTANT NOTICE</strong><br />
+              ALL customers are to report to the guardhouse upon reaching the building premise.
+            </span>
           </div>
         </div>
-      </div>
 
-      {/* 3 ── THREE GOLDEN RULES ── */}
-      <div className="tp-section dark">
-        <div className="tp-dir-inner">
-          <div className="tp-sec-tag">When You Arrive</div>
-          <div className="tp-dir-section-title">THREE GOLDEN<br />RULES</div>
-          <div className="tp-accent-line" style={{ marginBottom:"1.5rem" }} />
-          <div className="tp-rules-grid">
-            {GOLDEN_RULES.map((r, i) => (
-              <div key={i} className="tp-rule-card">
-                <DirImg src={r.img} alt={r.title}
-                  style={{ width:"100%", height:"180px", borderRadius:"3px 3px 0 0" }} />
-                <div className="tp-rule-title">{r.title}</div>
+        {/* 3 ── THREE GOLDEN RULES ── */}
+        <div style={{ marginBottom:"1.2rem" }}>
+          <h2 style={secTitle}>Three Golden Rules</h2>
+          <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:"0.5rem" }}>
+            {RULE_IMGS.map(({ src, label }) => (
+              <div key={label}>
+                <DirImg src={src} alt={label} />
+                <p style={{
+                  fontFamily:"'Barlow Condensed',sans-serif", fontWeight:800,
+                  fontSize:"0.78rem", textTransform:"uppercase", color:"#aaa",
+                  textAlign:"center", margin:"0.4rem 0 0", letterSpacing:"0.04em",
+                }}>{label}</p>
               </div>
             ))}
           </div>
         </div>
-      </div>
 
-      {/* 4 ── HOW TO GET TO OUR SHOP ── */}
-      <div className="tp-section surf">
-        <div className="tp-dir-inner">
-          <div className="tp-sec-tag">Step by Step</div>
-          <div className="tp-dir-section-title">HOW TO GET<br />TO OUR SHOP</div>
-          <div className="tp-accent-line" style={{ marginBottom:"1.2rem" }} />
-          <div className="tp-dir-steps">
-            {STEP_IMGS.map((src, i) => (
-              <div key={i} className="tp-dir-cell">
-                <div className="tp-dir-step-num">{String(i + 1).padStart(2, "0")}</div>
-                <DirImg src={src} alt={`Step ${i + 1}`}
-                  style={{ width:"100%", height:"100%", position:"absolute", inset:0 }} />
-              </div>
-            ))}
-          </div>
-          <div className="tp-dir-note">
-            To ALL customers RIDING to the shop, please remember the 3 golden rules above.
-          </div>
+        {/* 4 ── TEXT LINE ── */}
+        <div style={{ marginBottom:"2rem", borderLeft:"2px solid #C8FF00", paddingLeft:"0.9rem" }}>
+          <p style={{ fontSize:"0.85rem", color:"#888", lineHeight:1.75, margin:0, fontStyle:"italic" }}>
+            To ALL customers RIDING to the shop, please remember the 3 golden rules above.{" "}
+            Appreciate your co-operation.
+          </p>
         </div>
-      </div>
 
-      {/* 5 ── ROOF-MOUNTED RACKS ── */}
-      <div className="tp-section dark">
-        <div className="tp-dir-inner">
-          <div className="tp-sec-tag">Bike Transport</div>
-          <div className="tp-dir-rack-title">ROOF-MOUNTED<br />RACKS</div>
-          <div className="tp-accent-line" style={{ marginBottom:"1.2rem" }} />
-          <div className="tp-rack-grid">
+        {/* 5 ── DIRECTION PHOTOS ── */}
+        <div style={{ display:"flex", flexDirection:"column", gap:"0.5rem", marginBottom:"2rem" }}>
+          {STEP_IMGS.map((src, i) => (
+            <DirImg key={i} src={src} alt={`Direction step ${i + 1}`} />
+          ))}
+        </div>
+
+        {/* 6 ── ROOF-MOUNTED RACKS ── */}
+        <div style={{ marginBottom:"2rem" }}>
+          <h2 style={secTitle}>Roof-Mounted Racks</h2>
+          <div style={{ display:"flex", flexDirection:"column", gap:"0.5rem" }}>
             {ROOF_IMGS.map((src, i) => (
-              <DirImg key={i} src={src} alt={`Roof rack ${i + 1}`}
-                style={{ aspectRatio:"4/3", borderRadius:"2px" }} />
+              <DirImg key={i} src={src} alt={`Roof rack ${i + 1}`} />
             ))}
           </div>
         </div>
-      </div>
 
-      {/* 6 ── REAR-MOUNTED RACKS ── */}
-      <div className="tp-section surf">
-        <div className="tp-dir-inner">
-          <div className="tp-dir-rack-title">REAR-MOUNTED<br />RACKS</div>
-          <div className="tp-accent-line" style={{ marginBottom:"1.2rem" }} />
-          <div className="tp-rack-grid">
+        {/* 7 ── REAR-MOUNTED RACKS ── */}
+        <div>
+          <h2 style={secTitle}>Rear-Mounted Racks</h2>
+          <div style={{ display:"flex", flexDirection:"column", gap:"0.5rem" }}>
             {REAR_IMGS.map((src, i) => (
-              <DirImg key={i} src={src} alt={`Rear rack ${i + 1}`}
-                style={{ aspectRatio:"4/3", borderRadius:"2px" }} />
+              <DirImg key={i} src={src} alt={`Rear rack ${i + 1}`} />
             ))}
           </div>
         </div>
+
       </div>
     </div>
   );
