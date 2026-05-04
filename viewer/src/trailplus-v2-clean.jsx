@@ -377,6 +377,7 @@ html{-webkit-text-size-adjust:100%;}
 
   /* FULL SERVICE */
   .tp-fs-desktop-grid{display:grid!important;grid-template-columns:repeat(2,1fr);gap:2.5rem;align-items:start;}
+  .tp-gallery-main{aspect-ratio:unset!important;height:400px!important;}
 
   /* BIKE BUILD */
   .tp-build-grid{grid-template-columns:repeat(5,1fr);gap:4px;}
@@ -590,7 +591,7 @@ function GallerySlider({ images }) {
   return (
     <div style={{ margin:"1.1rem 0 0.4rem" }}>
       {/* Main image */}
-      <div style={{ position:"relative", width:"100%", aspectRatio:"4/3", background:"#0d0d0d", borderRadius:"3px", overflow:"hidden", border:"1px solid #1e1e1e" }}>
+      <div className="tp-gallery-main" style={{ position:"relative", width:"100%", aspectRatio:"4/3", background:"#0d0d0d", borderRadius:"3px", overflow:"hidden", border:"1px solid #1e1e1e" }}>
         <img
           src={images[active]}
           alt={`photo ${active + 1}`}
