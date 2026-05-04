@@ -97,21 +97,14 @@ html{-webkit-text-size-adjust:100%;}
 .tp-dir-notice{border:2px solid ${L};border-radius:3px;padding:1rem 1.2rem;font-size:0.88rem;color:#ccc;line-height:1.65;display:flex;gap:0.75rem;align-items:flex-start;background:rgba(200,255,0,0.04);}
 .tp-dir-notice-icon{font-size:1.1rem;flex-shrink:0;margin-top:0.1rem;}
 .tp-dir-section-title,.tp-dir-rack-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.2rem;text-transform:uppercase;color:#fff;line-height:0.95;margin-bottom:0.5rem;}
-.tp-rules-grid{display:flex;flex-direction:column;gap:1rem;margin-bottom:0.5rem;}
-.tp-rule-card{background:${CARD};border:1px solid ${BR};border-radius:3px;overflow:hidden;display:flex;flex-direction:row;}
-.tp-rule-img{width:110px;flex-shrink:0;background:#0d0d0d;display:flex;align-items:center;justify-content:center;overflow:hidden;}
-.tp-rule-img img{width:100%;height:100%;object-fit:contain;display:block;}
-.tp-rule-img-ph{width:100%;height:100%;min-height:110px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;}
-.tp-rule-body{padding:0.85rem 1rem;flex:1;}
-.tp-rule-num{font-family:'DM Mono',monospace;font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:${L};margin-bottom:0.3rem;}
-.tp-rule-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.1rem;text-transform:uppercase;color:#fff;margin-bottom:0.3rem;}
-.tp-rule-desc{font-size:0.78rem;color:#666;line-height:1.6;}
-.tp-dir-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:1.1rem;}
+.tp-rules-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-bottom:0.5rem;}
+.tp-rule-card{background:${CARD};border:1px solid ${BR};border-radius:3px;overflow:hidden;}
+.tp-rule-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:0.95rem;text-transform:uppercase;color:#fff;text-align:center;padding:0.6rem 0.5rem 0.7rem;}
+.tp-dir-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:1.1rem;}
 .tp-dir-cell{position:relative;aspect-ratio:4/3;background:#111;overflow:hidden;border-radius:2px;}
-.tp-dir-cell img,.tp-dir-cell-img{width:100%;height:100%;object-fit:cover;display:block;}
 .tp-dir-step-num{position:absolute;top:0.4rem;left:0.45rem;font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;color:${L};z-index:1;background:rgba(0,0,0,0.6);padding:0.1rem 0.3rem;border-radius:2px;}
 .tp-dir-note{font-size:0.8rem;color:#888;line-height:1.6;border-left:2px solid ${L};padding-left:0.8rem;font-style:italic;margin-top:0.5rem;}
-.tp-rack-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;}
+.tp-rack-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;}
 .tp-rack-cell{aspect-ratio:4/3;background:#111;overflow:hidden;border-radius:2px;}
 .tp-rack-cell img{width:100%;height:100%;object-fit:cover;display:block;}
 
@@ -333,10 +326,6 @@ html{-webkit-text-size-adjust:100%;}
   .tp-svc-card{margin:0 3rem 1rem;}
   /* Directions 768px */
   .tp-dir-map{height:360px;}
-  .tp-rules-grid{flex-direction:row;gap:1rem;}
-  .tp-rule-card{flex-direction:column;}
-  .tp-rule-img{width:100%;height:160px;}
-  .tp-dir-grid{grid-template-columns:repeat(3,1fr);}
   .tp-rack-grid{grid-template-columns:repeat(3,1fr);}
   .tp-process{padding:3rem;}
   .tp-cta{padding:3rem;}
@@ -469,9 +458,7 @@ html{-webkit-text-size-adjust:100%;}
   .tp-dir-map{height:460px;}
   .tp-dir-section-title,.tp-dir-rack-title{font-size:3rem;}
   .tp-rules-grid{gap:1.5rem;}
-  .tp-rule-img{height:200px;}
-  .tp-dir-grid{grid-template-columns:repeat(4,1fr);}
-  .tp-rack-grid{grid-template-columns:repeat(3,1fr);}
+  .tp-rack-grid{grid-template-columns:repeat(4,1fr);}
 
   /* BIKE BUILD */
   .tp-build-grid{grid-template-columns:repeat(5,1fr);gap:4px;}
@@ -1292,84 +1279,59 @@ function PageServiceRequest({ onBack }) {
 
 /* ─── DIRECTIONS PAGE ─── */
 function PageDirections({ onBack }) {
-  // ── Image URLs ──────────────────────────────────────────────────────────
-  // Images marked "TODO" are not yet uploaded to Cloudinary.
-  // Replace "" with the Cloudinary secure_url once uploaded.
+  // ── Cloudinary URLs (Trail+/Directions folder) ──────────────────────────
+  // Images not yet in Cloudinary are marked "TODO" — swap in URL on upload.
+  const CL = "https://res.cloudinary.com/dhumj7ari/image/upload";
+
   const GOLDEN_RULES = [
-    {
-      img: "",  // TODO: upload lifts-1.png → Trail+/Directions
-      icon: "🛗",
-      num: "RULE 01",
-      title: "USE THE LIFTS",
-      desc: "Take the lifts to Level 3. Do not carry your bike up the stairs.",
-    },
-    {
-      img: "",  // TODO: upload no_glass_door-150x150.png → Trail+/Directions
-      icon: "🚪",
-      num: "RULE 02",
-      title: "NO GLASS DOOR",
-      desc: "Do not enter through the glass door. Use the side entrance to the lift lobby.",
-    },
-    {
-      img: "",  // TODO: upload no_ramp.png → Trail+/Directions
-      icon: "⛔",
-      num: "RULE 03",
-      title: "NO RAMP",
-      desc: "Do not ride or wheel your bike up the vehicle ramp. Use the pedestrian entrance.",
-    },
+    { img: "",  title: "USE THE LIFTS"   },  // TODO: lifts-1.png
+    { img: "",  title: "NO GLASS DOOR"   },  // TODO: no_glass_door-150x150.png
+    { img: "",  title: "NO RAMP"         },  // TODO: no_ramp.png
   ];
 
-  const DIR_IMGS = [
-    "",   // TODO: 01-1-768x518.jpg
-    "https://res.cloudinary.com/dhumj7ari/image/upload/v1777893354/02-1-768x674_iww0df.jpg",
-    "",   // TODO: 03-768x546.jpg
-    "",   // TODO: 04-768x552.jpg
-    "",   // TODO: 05-768x491.jpg
-    "https://res.cloudinary.com/dhumj7ari/image/upload/v1777893355/06-768x516_hdkgzw.jpg",
-    "https://res.cloudinary.com/dhumj7ari/image/upload/v1777893395/07-768x520_moblm2.jpg",
-    "",   // TODO: 08-768x536.jpg
-    "",   // TODO: 09-768x521.jpg
-    "",   // TODO: 10-573x1024.jpg
-    "",   // TODO: 11-768x675.jpg
+  // Steps 01–03 only
+  const STEP_IMGS = [
+    "",                                                          // TODO: 01-1-768x518.jpg
+    `${CL}/v1777893354/02-1-768x674_iww0df.jpg`,               // 02
+    "",                                                          // TODO: 03-768x546.jpg
   ];
 
+  // Roof-mounted racks: images 04–11
   const ROOF_IMGS = [
-    "https://res.cloudinary.com/dhumj7ari/image/upload/v1777893355/06-768x516_hdkgzw.jpg",
-    "https://res.cloudinary.com/dhumj7ari/image/upload/v1777893395/07-768x520_moblm2.jpg",
-    "",   // TODO: 08-768x536.jpg
-    "",   // TODO: 09-768x521.jpg
-    "",   // TODO: 10-573x1024.jpg
-    "",   // TODO: 11-768x675.jpg
+    "",                                                          // TODO: 04-768x552.jpg
+    "",                                                          // TODO: 05-768x491.jpg
+    `${CL}/v1777893355/06-768x516_hdkgzw.jpg`,                 // 06
+    `${CL}/v1777893395/07-768x520_moblm2.jpg`,                 // 07
+    "",                                                          // TODO: 08-768x536.jpg
+    "",                                                          // TODO: 09-768x521.jpg
+    "",                                                          // TODO: 10-573x1024.jpg
+    "",                                                          // TODO: 11-768x675.jpg
   ];
 
+  // Rear-mounted racks: images 13–14
   const REAR_IMGS = [
-    "",   // TODO: 13-768x504.jpg
-    "https://res.cloudinary.com/dhumj7ari/image/upload/v1777893354/14-768x646_ijcsaj.jpg",
+    "",                                                          // TODO: 13-768x504.jpg
+    `${CL}/v1777893354/14-768x646_ijcsaj.jpg`,                 // 14
   ];
 
-  const ImgCell = ({ src, alt, className }) => (
-    <div className={className} style={!src ? { background:"#111" } : {}}>
+  const DirImg = ({ src, alt, style = {} }) => (
+    <div style={{ background:"#111", overflow:"hidden", ...style }}>
       {src && (
-        <img
-          src={src} alt={alt}
-          onError={e => { e.target.parentNode.style.background="#1e1e1e"; e.target.style.display="none"; }}
-        />
+        <img src={src} alt={alt} style={{ width:"100%", height:"100%", objectFit:"cover", display:"block" }}
+          onError={e => { e.target.parentNode.style.background="#1e1e1e"; e.target.style.display="none"; }} />
       )}
     </div>
   );
 
   return (
     <div>
-      {/* ── HEADER ── */}
+      {/* 1 ── FIND US ── */}
       <div className="tp-page-hero">
         <BackBtn onClick={onBack} />
         <div className="tp-sec-tag">Getting Here</div>
         <div className="tp-page-title">FIND US</div>
-        <p className="tp-page-desc">50 Bukit Batok Crescent, #03-16, Midview Building, Singapore 659578</p>
         <div className="tp-accent-line" />
       </div>
-
-      {/* ── MAP + CONTACT ── */}
       <div className="tp-section dark">
         <div className="tp-dir-inner">
           <div className="tp-dir-contact-item">📍 <span>50 Bukit Batok Crescent, #03-16, Midview Building, Singapore 659578</span></div>
@@ -1377,15 +1339,14 @@ function PageDirections({ onBack }) {
           <div className="tp-dir-map">
             <iframe
               src="https://maps.google.com/maps?q=Midview+Building,+50+Bukit+Batok+Crescent,+Singapore+659578&t=&z=17&ie=UTF8&iwloc=&output=embed"
-              allowFullScreen loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
               title="Trail+ Location"
             />
           </div>
         </div>
       </div>
 
-      {/* ── IMPORTANT NOTICE ── */}
+      {/* 2 ── IMPORTANT NOTICE ── */}
       <div className="tp-section surf">
         <div className="tp-dir-inner">
           <div className="tp-dir-notice">
@@ -1395,7 +1356,7 @@ function PageDirections({ onBack }) {
         </div>
       </div>
 
-      {/* ── THREE GOLDEN RULES ── */}
+      {/* 3 ── THREE GOLDEN RULES ── */}
       <div className="tp-section dark">
         <div className="tp-dir-inner">
           <div className="tp-sec-tag">When You Arrive</div>
@@ -1404,34 +1365,27 @@ function PageDirections({ onBack }) {
           <div className="tp-rules-grid">
             {GOLDEN_RULES.map((r, i) => (
               <div key={i} className="tp-rule-card">
-                <div className="tp-rule-img">
-                  {r.img
-                    ? <img src={r.img} alt={r.title} onError={e => { e.target.parentNode.style.background="#111"; e.target.style.display="none"; }} />
-                    : <div className="tp-rule-img-ph">{r.icon}</div>
-                  }
-                </div>
-                <div className="tp-rule-body">
-                  <div className="tp-rule-num">{r.num}</div>
-                  <div className="tp-rule-title">{r.title}</div>
-                  <div className="tp-rule-desc">{r.desc}</div>
-                </div>
+                <DirImg src={r.img} alt={r.title}
+                  style={{ width:"100%", height:"180px", borderRadius:"3px 3px 0 0" }} />
+                <div className="tp-rule-title">{r.title}</div>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* ── DIRECTIONS PHOTO GRID ── */}
+      {/* 4 ── HOW TO GET TO OUR SHOP ── */}
       <div className="tp-section surf">
         <div className="tp-dir-inner">
           <div className="tp-sec-tag">Step by Step</div>
           <div className="tp-dir-section-title">HOW TO GET<br />TO OUR SHOP</div>
           <div className="tp-accent-line" style={{ marginBottom:"1.2rem" }} />
-          <div className="tp-dir-grid">
-            {DIR_IMGS.map((src, i) => (
+          <div className="tp-dir-steps">
+            {STEP_IMGS.map((src, i) => (
               <div key={i} className="tp-dir-cell">
                 <div className="tp-dir-step-num">{String(i + 1).padStart(2, "0")}</div>
-                <ImgCell src={src} alt={`Step ${i + 1}`} className="tp-dir-cell-img" />
+                <DirImg src={src} alt={`Step ${i + 1}`}
+                  style={{ width:"100%", height:"100%", position:"absolute", inset:0 }} />
               </div>
             ))}
           </div>
@@ -1441,7 +1395,7 @@ function PageDirections({ onBack }) {
         </div>
       </div>
 
-      {/* ── ROOF-MOUNTED RACKS ── */}
+      {/* 5 ── ROOF-MOUNTED RACKS ── */}
       <div className="tp-section dark">
         <div className="tp-dir-inner">
           <div className="tp-sec-tag">Bike Transport</div>
@@ -1449,20 +1403,22 @@ function PageDirections({ onBack }) {
           <div className="tp-accent-line" style={{ marginBottom:"1.2rem" }} />
           <div className="tp-rack-grid">
             {ROOF_IMGS.map((src, i) => (
-              <ImgCell key={i} src={src} alt={`Roof rack ${i + 1}`} className="tp-rack-cell" />
+              <DirImg key={i} src={src} alt={`Roof rack ${i + 1}`}
+                style={{ aspectRatio:"4/3", borderRadius:"2px" }} />
             ))}
           </div>
         </div>
       </div>
 
-      {/* ── REAR-MOUNTED RACKS ── */}
+      {/* 6 ── REAR-MOUNTED RACKS ── */}
       <div className="tp-section surf">
         <div className="tp-dir-inner">
           <div className="tp-dir-rack-title">REAR-MOUNTED<br />RACKS</div>
           <div className="tp-accent-line" style={{ marginBottom:"1.2rem" }} />
           <div className="tp-rack-grid">
             {REAR_IMGS.map((src, i) => (
-              <ImgCell key={i} src={src} alt={`Rear rack ${i + 1}`} className="tp-rack-cell" />
+              <DirImg key={i} src={src} alt={`Rear rack ${i + 1}`}
+                style={{ aspectRatio:"4/3", borderRadius:"2px" }} />
             ))}
           </div>
         </div>
