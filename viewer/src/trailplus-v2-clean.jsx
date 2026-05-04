@@ -77,6 +77,7 @@ html{-webkit-text-size-adjust:100%;}
 .tp-pkg-btn{display:flex;align-items:center;justify-content:space-between;background:${L};color:#000;padding:0.85rem 1.1rem;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;border:none;border-radius:2px;cursor:pointer;text-decoration:none;width:100%;}
 .tp-pkg-note{background:rgba(200,255,0,0.04);border:1px solid rgba(200,255,0,0.15);border-radius:3px;padding:0.9rem 1rem;font-family:'DM Mono',monospace;font-size:0.7rem;color:#666;letter-spacing:0.03em;line-height:1.6;margin-top:1rem;}
 .tp-pkg-note strong{color:${L};}
+.tp-pkg-badge{display:none;}
 
 /* FULL SERVICE SECTIONS */
 .tp-fs-block{margin-bottom:2rem;}
@@ -458,9 +459,15 @@ html{-webkit-text-size-adjust:100%;}
   /* SECTION PADDING */
   .tp-section{padding:3.5rem 6vw;}
 
-  /* SERVICE PACKAGES GRID */
-  .tp-pkg-grid{display:grid!important;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
-  .tp-pkg-card{margin-bottom:0;}
+  /* SERVICE PACKAGES GRID — desktop pricing cards */
+  .tp-pkg-grid{display:grid!important;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:stretch;}
+  .tp-pkg-card{margin-bottom:0;display:flex;flex-direction:column;border-color:rgba(200,255,0,0.28);}
+  .tp-pkg-card::before{display:none!important;}
+  .tp-pkg-list{flex:1;}
+  .tp-pkg-card--featured{border-color:${L};background:#0c1300;box-shadow:0 0 40px rgba(200,255,0,0.08);}
+  .tp-pkg-badge{display:block;font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:${L};border:1px solid rgba(200,255,0,0.4);border-radius:2px;padding:0.22rem 0.6rem;width:fit-content;margin-bottom:0.8rem;}
+  .tp-pkg-price{font-size:3rem;}
+  .tp-pkg-name{font-size:1.15rem;}
 
   /* FULL SERVICE */
   .tp-fs-inner{max-width:1320px;margin:0 auto;}
@@ -663,20 +670,23 @@ function PageServicePackages({ onBack, onNav }) {
       </div>
 
       <div className="tp-section dark">
-        {[
-          { price:"$250", name:"Full Service — Full-sus MTB", items:["Bike fully stripped","Frame, linkages, rockers fully stripped, washed and polished","All linkage bearings extracted, degreased, washed, inspected and re-greased","All linkage bolts torqued to bike specifications","Fork and shock washed and polished","Drivetrain (RD, jockey wheels, chain, cassette, crank, chainring, pedals) stripped, degreased, washed and re-greased","Headset stripped, degreased, washed and re-greased","Brakes washed, rebled. Pistons reset. Rotors cleaned","Hubs fully stripped, degreased, washed and inspected. All ratcheting mechanism re-greased","Both wheels washed and trued (subject to condition)"] },
-          { price:"$200", name:"Full Service — Hardtail", items:["Bike fully stripped","Frame fully stripped, washed and polished","Fork washed and polished","Drivetrain stripped, degreased, washed and re-greased","Headset stripped, degreased, washed and re-greased","Brakes washed and rebled. Pistons reset. Rotors cleaned","Hubs fully stripped, degreased, washed and inspected","Both wheels washed and trued (subject to condition)"] },
-          { price:"$100", name:"Basic Service — All Bikes", items:["Bike wash","Drivetrain stripped, degreased, washed and re-greased (where needed)","Gear tuning","Chain lubrication","All other parts visually inspected"] },
-        ].map(pkg => (
-          <div key={pkg.name} className="tp-pkg-card">
-            <div className="tp-pkg-price">{pkg.price}</div>
-            <div className="tp-pkg-name">{pkg.name}</div>
-            <ul className="tp-pkg-list">
-              {pkg.items.map((item, i) => <li key={i}>{item}</li>)}
-            </ul>
-            <BookBtn onNav={onNav} />
-          </div>
-        ))}
+        <div className="tp-pkg-grid">
+          {[
+            { price:"S$250", name:"Full Service", sub:"Full-Suspension MTB", featured:false, items:["Bike fully stripped","Frame, linkages, rockers fully stripped, washed and polished","All linkage bearings extracted, degreased, washed, inspected and re-greased","All linkage bolts torqued to bike specifications","Fork and shock washed and polished","Drivetrain (RD, jockey wheels, chain, cassette, crank, chainring, pedals) stripped, degreased, washed and re-greased","Headset stripped, degreased, washed and re-greased","Brakes washed, rebled. Pistons reset. Rotors cleaned","Hubs fully stripped, degreased, washed and inspected. All ratcheting mechanism re-greased","Both wheels washed and trued (subject to condition)"] },
+            { price:"S$200", name:"Full Service", sub:"Hardtail",            featured:true,  items:["Bike fully stripped","Frame fully stripped, washed and polished","Fork washed and polished","Drivetrain stripped, degreased, washed and re-greased","Headset stripped, degreased, washed and re-greased","Brakes washed and rebled. Pistons reset. Rotors cleaned","Hubs fully stripped, degreased, washed and inspected","Both wheels washed and trued (subject to condition)"] },
+            { price:"S$100", name:"Basic Service", sub:"All Bikes",          featured:false, items:["Bike wash","Drivetrain stripped, degreased, washed and re-greased (where needed)","Gear tuning","Chain lubrication","All other parts visually inspected"] },
+          ].map(pkg => (
+            <div key={pkg.sub} className={`tp-pkg-card${pkg.featured ? " tp-pkg-card--featured" : ""}`}>
+              {pkg.featured && <div className="tp-pkg-badge">Most Popular</div>}
+              <div className="tp-pkg-price">{pkg.price}</div>
+              <div className="tp-pkg-name">{pkg.name}<br /><span style={{ fontWeight:600, fontSize:"0.85em", opacity:0.7, textTransform:"none" }}>{pkg.sub}</span></div>
+              <ul className="tp-pkg-list">
+                {pkg.items.map((item, i) => <li key={i}>{item}</li>)}
+              </ul>
+              <BookBtn onNav={onNav} />
+            </div>
+          ))}
+        </div>
         <div className="tp-pkg-note">
           <strong>Note:</strong> All servicing packages exclude servicing of dropper, fork &amp; shock, replacement parts, facing of head tube / bottom bracket / brake mounting surfaces, chasing of bottom bracket, and rebuilding of damaged shifters.<br /><br />
           * Additional charge for hubs that require special tools (e.g. Chris King).
