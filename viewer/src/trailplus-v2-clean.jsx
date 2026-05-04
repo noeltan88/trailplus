@@ -1787,6 +1787,11 @@ function Menu({ open, onClose, onNav }) {
         <div className="tp-menu-section">
           <div className="tp-menu-section-label">Navigation</div>
 
+          <div className="tp-menu-item" onClick={() => navTo("home")}>
+            <span className="tp-menu-item-label">Home</span>
+            <span className="tp-menu-item-arrow">→</span>
+          </div>
+
           {/* Services with sub-menu */}
           <div className="tp-menu-item" onClick={() => setSvcOpen(v => !v)}>
             <span className="tp-menu-item-label">Services</span>
@@ -1803,14 +1808,6 @@ function Menu({ open, onClose, onNav }) {
             </div>
           )}
 
-          <div className="tp-menu-item" onClick={() => navTo("home")}>
-            <span className="tp-menu-item-label">Home</span>
-            <span className="tp-menu-item-arrow">→</span>
-          </div>
-          <div className="tp-menu-item" onClick={() => navTo("directions")}>
-            <span className="tp-menu-item-label">Directions</span>
-            <span className="tp-menu-item-arrow">→</span>
-          </div>
           <div className="tp-menu-item" onClick={() => { window.open("https://trailplus.sg/#brands","_blank"); onClose(); }}>
             <span className="tp-menu-item-label">Brands</span>
             <span className="tp-menu-item-arrow">→</span>
@@ -1821,6 +1818,10 @@ function Menu({ open, onClose, onNav }) {
           </div>
           <div className="tp-menu-item" onClick={() => { window.open("https://trailplus.sg/#contact_us","_blank"); onClose(); }}>
             <span className="tp-menu-item-label">Contact Us</span>
+            <span className="tp-menu-item-arrow">→</span>
+          </div>
+          <div className="tp-menu-item" onClick={() => navTo("directions")}>
+            <span className="tp-menu-item-label">Directions</span>
             <span className="tp-menu-item-arrow">→</span>
           </div>
         </div>
