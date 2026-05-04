@@ -236,6 +236,165 @@ html{-webkit-text-size-adjust:100%;}
 .tp-mitem{font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;color:#3a3a3a;white-space:nowrap;display:flex;align-items:center;gap:2rem;}
 .tp-mitem .dot{color:${L};font-size:0.5rem;}
 @keyframes tpPulse{0%,100%{box-shadow:0 0 0 0 rgba(200,255,0,0.4)}50%{box-shadow:0 0 0 6px rgba(200,255,0,0)}}
+/* ─────────────────────────────────────────────────────────
+   RESPONSIVE — TABLET (768px+) & DESKTOP (1024px+)
+───────────────────────────────────────────────────────── */
+@media(min-width:768px){
+  .tp{max-width:100%;}
+  .tp-section{padding:2.5rem 3rem;}
+  .tp-page-hero{padding:2.5rem 3rem 2rem;}
+  .tp-trust{padding:2.5rem 3rem;}
+  .tp-footer{padding:2.5rem 3rem 2rem;}
+  .tp-footer-cols{grid-template-columns:repeat(3,1fr);gap:2rem;}
+  .tp-hero{min-height:65vh;}
+  .tp-hero-h1{font-size:4.2rem;}
+  .tp-home-services{padding:2.5rem 0;}
+  .tp-home-services-hdr{padding:0 3rem;}
+  .tp-svc-card{margin:0 3rem 1rem;}
+  .tp-process{padding:3rem;}
+  .tp-cta{padding:3rem;}
+  .tp-builds{padding:2.5rem 3rem;}
+  .tp-test{padding:2.5rem 3rem;}
+  .tp-insta{padding:2.5rem 3rem;}
+}
+
+@media(min-width:1024px){
+  .tp{max-width:100%;box-shadow:none;}
+
+  /* NAV */
+  .tp-nav{padding:0.9rem 5vw;max-width:100%;}
+  .tp-nav-links{display:flex!important;align-items:center;gap:2rem;}
+  .tp-nav-link{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;color:#888;text-decoration:none;cursor:pointer;transition:color 0.2s;white-space:nowrap;}
+  .tp-nav-link:hover{color:#C8FF00;}
+  .tp-nav-cta{background:#C8FF00;color:#000;padding:0.6rem 1.3rem;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;border:none;border-radius:2px;cursor:pointer;text-decoration:none;white-space:nowrap;}
+  .tp-ham{display:none;}
+
+  /* HERO */
+  .tp-hero{min-height:88vh;padding:6rem 6vw 5rem;}
+  .tp-hero-content{max-width:900px;}
+  .tp-hero-h1{font-size:5.8rem;margin-bottom:1.5rem;}
+  .tp-hero-desc{font-size:1rem;max-width:480px;margin-bottom:2.5rem;}
+  .tp-hero-btns{display:flex!important;flex-direction:row!important;gap:1rem;align-items:stretch;}
+  .tp-home-btn-lime{width:auto;min-width:240px;margin-bottom:0;}
+  .tp-home-btn-dark{width:auto;min-width:220px;margin-top:0;}
+
+  /* TRUST */
+  .tp-trust{padding:4.5rem 6vw;}
+  .tp-trust-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;max-width:1320px;margin:0 auto;}
+  .tp-trust-title{font-size:3rem;}
+  .tp-trust-tag{margin-bottom:0.5rem;}
+  .tp-trust-stats{gap:2rem;margin-bottom:2rem;}
+  .tp-ts-num{font-size:1.6rem;}
+
+  /* SERVICES */
+  .tp-home-services{padding:5rem 0;}
+  .tp-home-services-hdr{padding:0 6vw;max-width:1320px;margin-left:auto;margin-right:auto;}
+  .tp-sec-title-lg{font-size:3rem;}
+  .tp-svc-carousel{display:none!important;}
+  .tp-svc-desktop-grid{display:grid!important;grid-template-columns:repeat(3,1fr);gap:0;padding:0;max-width:1320px;margin:2rem auto 0;}
+  .tp-svc-card{margin:0;border-radius:0;border-top:none;border-left:none;border-bottom:none;border-right:1px solid #1e1e1e;}
+  .tp-svc-card:last-child{border-right:none;}
+  .tp-svc-img{height:260px;}
+  .tp-svc-name{font-size:1.7rem;}
+  .tp-svc-desc{font-size:0.85rem;}
+
+  /* PROCESS */
+  .tp-process{padding:5rem 6vw;}
+  .tp-process-inner{max-width:1320px;margin:0 auto;}
+  .tp-process-title{font-size:3.8rem;}
+  .tp-steps{display:grid!important;grid-template-columns:repeat(4,1fr);gap:0;margin-top:3rem;}
+  .tp-steps-line{display:none;}
+  .tp-step{flex-direction:column;gap:1rem;margin-bottom:0;padding:2rem 2rem 2rem 0;border-left:none;}
+  .tp-step-icon{width:48px;height:48px;font-size:1.2rem;margin-bottom:0.5rem;}
+  .tp-step-title{font-size:1.2rem;}
+  .tp-step-desc{font-size:0.83rem;max-width:220px;}
+
+  /* CTA */
+  .tp-cta{padding:5rem 6vw;}
+  .tp-cta-inner{display:flex!important;align-items:center;justify-content:space-between;gap:5rem;max-width:1320px;margin:0 auto;}
+  .tp-cta-copy{flex:1;}
+  .tp-cta-title{font-size:3.8rem;margin-bottom:0;}
+  .tp-cta-eye{margin-bottom:0.5rem;}
+  .tp-cta-actions{flex-shrink:0;min-width:280px;display:flex;flex-direction:column;gap:0.8rem;}
+  .tp-cta-btn{width:auto;margin-bottom:0;}
+  .tp-cta-alt-lbl{text-align:left;}
+  .tp-cta-alt-link{text-align:left;}
+
+  /* BUILDS */
+  .tp-builds{padding:5rem 6vw;}
+  .tp-builds-inner{max-width:1320px;margin:0 auto;}
+  .tp-builds-grid{grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,200px);gap:4px;margin-bottom:2rem;}
+
+  /* TESTIMONIALS */
+  .tp-test{padding:5rem 6vw;}
+  .tp-test-inner{max-width:1320px;margin:0 auto;}
+  .tp-test-single{display:none!important;}
+  .tp-test-desktop{display:grid!important;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+  .tp-test-quote{font-size:5.5rem;margin-bottom:2rem;}
+
+  /* INSTAGRAM */
+  .tp-insta{padding:5rem 6vw;}
+  .tp-insta-inner{max-width:1320px;margin:0 auto;}
+  .tp-insta-grid{grid-template-columns:repeat(6,1fr);grid-template-rows:none;height:220px;}
+  .tp-insta-handle{font-size:2.8rem;}
+  .tp-insta-btn{max-width:320px;}
+
+  /* FOOTER */
+  .tp-footer{padding:4.5rem 6vw 2.5rem;}
+  .tp-footer-inner{max-width:1320px;margin:0 auto;}
+  .tp-footer-top{display:grid;grid-template-columns:2fr 1fr 1.5fr;gap:4rem;margin-bottom:2.5rem;align-items:start;}
+  .tp-footer-cols{display:contents;}
+  .tp-footer-brand{max-width:none;}
+  .tp-footer-tag{max-width:300px;}
+  .tp-footer-copy{max-width:1320px;margin:0 auto;}
+
+  /* PAGE HERO */
+  .tp-page-hero{padding:4rem 6vw 3rem;}
+  .tp-page-title{font-size:4.2rem;}
+  .tp-page-desc{font-size:1rem;max-width:640px;}
+
+  /* SECTION PADDING */
+  .tp-section{padding:3.5rem 6vw;}
+
+  /* SERVICE PACKAGES GRID */
+  .tp-pkg-grid{display:grid!important;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+  .tp-pkg-card{margin-bottom:0;}
+
+  /* FULL SERVICE */
+  .tp-fs-desktop-grid{display:grid!important;grid-template-columns:repeat(2,1fr);gap:2.5rem;align-items:start;}
+
+  /* BIKE BUILD */
+  .tp-build-grid{grid-template-columns:repeat(5,1fr);gap:4px;}
+  .tp-build-heading{font-size:2.2rem;}
+  .tp-build-intro{font-size:0.95rem;max-width:720px;}
+
+  /* WHEEL BUILD */
+  .tp-wheel-factors{grid-template-columns:repeat(4,1fr);gap:1rem;}
+  .tp-wheel-grid{grid-template-columns:repeat(4,1fr);}
+}
+
+@media(min-width:1440px){
+  .tp-hero{padding:7rem 8vw 5rem;}
+  .tp-hero-h1{font-size:7rem;}
+  .tp-trust{padding:5rem 8vw;}
+  .tp-trust-inner{gap:7rem;}
+  .tp-trust-title{font-size:3.5rem;}
+  .tp-home-services-hdr{padding:0 8vw;}
+  .tp-svc-desktop-grid{max-width:none;padding:0;}
+  .tp-process{padding:6rem 8vw;}
+  .tp-process-title{font-size:4.5rem;}
+  .tp-cta{padding:6rem 8vw;}
+  .tp-cta-title{font-size:4.5rem;}
+  .tp-builds{padding:6rem 8vw;}
+  .tp-test{padding:6rem 8vw;}
+  .tp-insta{padding:6rem 8vw;}
+  .tp-footer{padding:5rem 8vw 3rem;}
+  .tp-section{padding:4.5rem 8vw;}
+  .tp-page-hero{padding:5rem 8vw 4rem;}
+  .tp-page-title{font-size:5rem;}
+  .tp-sec-title-lg{font-size:3.5rem;}
+}
+
 `;
 
 /* ─── DATA ─── */
@@ -765,13 +924,16 @@ function HomePage({ onNav }) {
             <span className="gr">TUNED FOR<br />PERFORMANCE.</span>
           </h1>
           <p className="tp-hero-desc">Expert servicing, custom builds and precision tuning for riders who take their ride seriously.</p>
-          <a href="https://trailplus.sg/servicing-request-form/" className="tp-home-btn-lime" target="_blank" rel="noreferrer">BOOK A SERVICE <span>→</span></a>
-          <div className="tp-home-btn-dark" style={{ cursor:"pointer" }} onClick={() => onNav("bike-build")}>BUILD YOUR BIKE <span>→</span></div>
+          <div className="tp-hero-btns" style={{display:"flex",flexDirection:"column"}}>
+            <a href="https://trailplus.sg/servicing-request-form/" className="tp-home-btn-lime" target="_blank" rel="noreferrer">BOOK A SERVICE <span>→</span></a>
+            <div className="tp-home-btn-dark" style={{ cursor:"pointer", marginTop:"0.7rem" }} onClick={() => onNav("bike-build")}>BUILD YOUR BIKE <span>→</span></div>
+          </div>
         </div>
       </section>
 
       {/* TRUST */}
       <section className="tp-trust">
+        <div className="tp-trust-inner">
         <div className="tp-trust-tag">Trusted by Riders</div>
         <div className="tp-trust-title">SERIOUS ABOUT<br />THE RIDE</div>
         <div className="tp-trust-stats">
@@ -823,6 +985,7 @@ function HomePage({ onNav }) {
             </div>
           </div>
         </div>
+        </div>{/* /tp-trust-inner */}
       </section>
 
       {/* MARQUEE */}
@@ -843,26 +1006,48 @@ function HomePage({ onNav }) {
           <div className="tp-sec-title-lg">MORE THAN JUST<br />A BIKE SHOP</div>
           <div className="tp-accent-line" />
         </div>
-        <div className="tp-svc-card" onClick={() => onNav(SVCS[activeSvc].page)}>
-          <div className="tp-svc-img">
-            <img src={BUILD_IMGS[activeSvc % BUILD_IMGS.length]} alt={SVCS[activeSvc].name} onError={e => e.target.style.display="none"} />
-            <div className="tp-svc-num-tag">{SVCS[activeSvc].num}</div>
-            <div className="tp-svc-badge-icon">{SVCS[activeSvc].icon}</div>
+        {/* Mobile carousel */}
+        <div className="tp-svc-carousel">
+          <div className="tp-svc-card" onClick={() => onNav(SVCS[activeSvc].page)}>
+            <div className="tp-svc-img">
+              <img src={BUILD_IMGS[activeSvc % BUILD_IMGS.length]} alt={SVCS[activeSvc].name} onError={e => e.target.style.display="none"} />
+              <div className="tp-svc-num-tag">{SVCS[activeSvc].num}</div>
+              <div className="tp-svc-badge-icon">{SVCS[activeSvc].icon}</div>
+            </div>
+            <div className="tp-svc-body">
+              <div className="tp-svc-num-lbl">{SVCS[activeSvc].num}</div>
+              <div className="tp-svc-name">{SVCS[activeSvc].name.replace("\n"," ")}</div>
+              <div className="tp-svc-desc">{SVCS[activeSvc].desc}</div>
+              <div className="tp-svc-link">LEARN MORE <span>→</span></div>
+            </div>
           </div>
-          <div className="tp-svc-body">
-            <div className="tp-svc-num-lbl">{SVCS[activeSvc].num}</div>
-            <div className="tp-svc-name">{SVCS[activeSvc].name.replace("\n"," ")}</div>
-            <div className="tp-svc-desc">{SVCS[activeSvc].desc}</div>
-            <div className="tp-svc-link">LEARN MORE <span>→</span></div>
+          <div className="tp-dots">
+            {SVCS.map((_,i) => <div key={i} className={i === activeSvc ? "tp-dot-on" : "tp-dot-off"} onClick={() => setActiveSvc(i)} />)}
           </div>
         </div>
-        <div className="tp-dots">
-          {SVCS.map((_,i) => <div key={i} className={i === activeSvc ? "tp-dot-on" : "tp-dot-off"} onClick={() => setActiveSvc(i)} />)}
+        {/* Desktop grid — all services */}
+        <div className="tp-svc-desktop-grid" style={{display:"none"}}>
+          {SVCS.map((svc,i) => (
+            <div key={svc.num} className="tp-svc-card" onClick={() => onNav(svc.page)}>
+              <div className="tp-svc-img">
+                <img src={BUILD_IMGS[i % BUILD_IMGS.length]} alt={svc.name} onError={e => e.target.style.display="none"} />
+                <div className="tp-svc-num-tag">{svc.num}</div>
+                <div className="tp-svc-badge-icon">{svc.icon}</div>
+              </div>
+              <div className="tp-svc-body">
+                <div className="tp-svc-num-lbl">{svc.num}</div>
+                <div className="tp-svc-name">{svc.name.replace("\n"," ")}</div>
+                <div className="tp-svc-desc">{svc.desc}</div>
+                <div className="tp-svc-link">LEARN MORE <span>→</span></div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* PROCESS */}
       <section className="tp-process">
+        <div className="tp-process-inner">
         <div className="tp-sec-tag">Our Process</div>
         <div className="tp-process-title">SIMPLE.<br />PERSONAL.<br />DIALED.</div>
         <div className="tp-accent-line" />
@@ -879,19 +1064,27 @@ function HomePage({ onNav }) {
             </div>
           ))}
         </div>
+        </div>{/* /tp-process-inner */}
       </section>
 
       {/* CTA */}
       <section className="tp-cta">
-        <div className="tp-cta-eye">Ready to Level Up?</div>
-        <div className="tp-cta-title">BOOK YOUR<br />SERVICE TODAY</div>
-        <a href="https://wa.me/6591832244" className="tp-cta-btn" target="_blank" rel="noreferrer">BOOK NOW VIA WHATSAPP 💬</a>
-        <span className="tp-cta-alt-lbl">OR</span>
-        <a href="https://trailplus.sg/servicing-request-form/" className="tp-cta-alt-link" target="_blank" rel="noreferrer">CONTACT US →</a>
+        <div className="tp-cta-inner" style={{display:"block"}}>
+          <div className="tp-cta-copy">
+            <div className="tp-cta-eye">Ready to Level Up?</div>
+            <div className="tp-cta-title">BOOK YOUR<br />SERVICE TODAY</div>
+          </div>
+          <div className="tp-cta-actions">
+            <a href="https://wa.me/6591832244" className="tp-cta-btn" target="_blank" rel="noreferrer">BOOK NOW VIA WHATSAPP 💬</a>
+            <span className="tp-cta-alt-lbl">OR</span>
+            <a href="https://trailplus.sg/servicing-request-form/" className="tp-cta-alt-link" target="_blank" rel="noreferrer">CONTACT US →</a>
+          </div>
+        </div>
       </section>
 
       {/* BUILDS */}
       <section className="tp-builds">
+        <div className="tp-builds-inner">
         <div className="tp-sec-tag">Built to Ride</div>
         <div className="tp-sec-title-lg">CUSTOM BUILDS</div>
         <div className="tp-accent-line" />
@@ -903,6 +1096,7 @@ function HomePage({ onNav }) {
           ))}
         </div>
         <div className="tp-builds-link" onClick={() => onNav("bike-build")}>VIEW ALL BUILDS <span>→</span></div>
+        </div>{/* /tp-builds-inner */}
       </section>
 
       {/* TESTIMONIALS */}
@@ -910,24 +1104,45 @@ function HomePage({ onNav }) {
         <div className="tp-sec-tag">What Riders Say</div>
         <div className="tp-sec-title-lg">REAL RIDERS.<br />REAL FEEDBACK.</div>
         <div className="tp-accent-line" style={{ marginBottom:"1.5rem" }} />
-        <div className="tp-test-quote">❝❝</div>
-        <div className="tp-test-card">
-          <div className="tp-test-text">{TESTS[activeTest].q}</div>
-          <div className="tp-test-author">
-            <div className="tp-test-ava">{TESTS[activeTest].ava}</div>
-            <div>
-              <div className="tp-test-name">{TESTS[activeTest].name}</div>
-              <div className="tp-test-role">{TESTS[activeTest].role}</div>
+        <div className="tp-test-inner">
+          <div className="tp-test-quote">❝❝</div>
+          {/* Mobile: single card */}
+          <div className="tp-test-single">
+            <div className="tp-test-card">
+              <div className="tp-test-text">{TESTS[activeTest].q}</div>
+              <div className="tp-test-author">
+                <div className="tp-test-ava">{TESTS[activeTest].ava}</div>
+                <div>
+                  <div className="tp-test-name">{TESTS[activeTest].name}</div>
+                  <div className="tp-test-role">{TESTS[activeTest].role}</div>
+                </div>
+              </div>
+            </div>
+            <div className="tp-dots" style={{ marginTop:"1rem" }}>
+              {TESTS.map((_,i) => <div key={i} className={i === activeTest ? "tp-dot-on" : "tp-dot-off"} onClick={() => setActiveTest(i)} />)}
             </div>
           </div>
-        </div>
-        <div className="tp-dots" style={{ marginTop:"1rem" }}>
-          {TESTS.map((_,i) => <div key={i} className={i === activeTest ? "tp-dot-on" : "tp-dot-off"} onClick={() => setActiveTest(i)} />)}
-        </div>
+          {/* Desktop: all 3 cards */}
+          <div className="tp-test-desktop" style={{display:"none"}}>
+            {TESTS.map((t,i) => (
+              <div key={i} className="tp-test-card">
+                <div className="tp-test-text">{t.q}</div>
+                <div className="tp-test-author">
+                  <div className="tp-test-ava">{t.ava}</div>
+                  <div>
+                    <div className="tp-test-name">{t.name}</div>
+                    <div className="tp-test-role">{t.role}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>{/* /tp-test-inner */}
       </section>
 
       {/* INSTAGRAM */}
       <section className="tp-insta">
+        <div className="tp-insta-inner">
         <div className="tp-sec-tag">Follow Our Journey</div>
         <div className="tp-insta-handle">@TRAILPLUS.SG</div>
         <div className="tp-insta-grid">
@@ -938,10 +1153,14 @@ function HomePage({ onNav }) {
           ))}
         </div>
         <a href="https://instagram.com/trailplus.sg" className="tp-insta-btn" target="_blank" rel="noreferrer">FOLLOW US ON INSTAGRAM →</a>
+        </div>{/* /tp-insta-inner */}
       </section>
 
       {/* FOOTER */}
       <footer className="tp-footer">
+        <div className="tp-footer-inner">
+        <div className="tp-footer-top">
+        <div className="tp-footer-brand">
         <div className="tp-footer-logo"><img src="data:image/png;base64,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" alt="TRAIL+" style={{ height:"26px", width:"auto", display:"block", marginBottom:"0.3rem" }} /></div>
         <div className="tp-footer-sub">MTB PERFORMANCE LAB</div>
         <div className="tp-footer-tag">Singapore's MTB Performance Lab. Expert servicing, custom builds and precision tuning for riders who demand more from their ride.</div>
@@ -950,6 +1169,7 @@ function HomePage({ onNav }) {
             <a key={i} href={hr} className="tp-footer-social" target="_blank" rel="noreferrer">{ic}</a>
           ))}
         </div>
+        </div>{/* /tp-footer-brand */}
         <div className="tp-footer-cols">
           <div>
             <div className="tp-footer-col-ttl">Menu</div>
@@ -971,7 +1191,9 @@ function HomePage({ onNav }) {
             <div className="tp-footer-crow"><span className="tp-footer-cicon">🕐</span><span className="tp-footer-ctxt">Mon–Sat: 11AM–8PM<br />Sun & PH: Closed</span></div>
           </div>
         </div>
+        </div>{/* /tp-footer-top */}
         <div className="tp-footer-copy">© 2024 Trail+. All Rights Reserved.</div>
+        </div>{/* /tp-footer-inner */}
       </footer>
     </>
   );
@@ -1076,6 +1298,14 @@ export default function TrailPlusApp() {
           <div className="tp-nav-logo" onClick={() => navTo("home")}>
             <img src="data:image/png;base64,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" alt="TRAIL+" style={{ height:"28px", width:"auto", display:"block" }} />
             <div className="tp-logo-sub">MTB PERFORMANCE LAB</div>
+          </div>
+          <div className="tp-nav-links" style={{display:"none"}}>
+            <span className="tp-nav-link" onClick={() => navTo("packages")}>Servicing</span>
+            <span className="tp-nav-link" onClick={() => navTo("full-service")}>Full Service</span>
+            <span className="tp-nav-link" onClick={() => navTo("bike-build")}>Custom Builds</span>
+            <span className="tp-nav-link" onClick={() => navTo("wheel-build")}>Wheel Builds</span>
+            <span className="tp-nav-link" onClick={() => navTo("training")}>Training</span>
+            <a href="https://trailplus.sg/servicing-request-form/" className="tp-nav-cta" target="_blank" rel="noreferrer">BOOK NOW</a>
           </div>
           <div className="tp-ham" onClick={() => setMenuOpen(true)}>
             <span /><span /><span />
