@@ -1012,7 +1012,7 @@ function PageServiceRequest({ onBack }) {
       await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({ "form-name": "service-request", ...formData }),
+        body: encode({ "form-name": "servicing-request", ...formData }),
       });
       setSubmitted(true);
       window.scrollTo?.(0, 0);
@@ -1081,13 +1081,13 @@ function PageServiceRequest({ onBack }) {
 
       <div className="tp-section dark">
         <form
-          name="service-request"
+          name="servicing-request"
           method="POST"
           data-netlify="true"
           onSubmit={handleSubmit}
           className="tp-form"
         >
-          <input type="hidden" name="form-name" value="service-request" />
+          <input type="hidden" name="form-name" value="servicing-request" />
 
           {/* 1 — Servicing Type */}
           <div className="tp-form-section">

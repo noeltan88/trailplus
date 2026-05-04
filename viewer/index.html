@@ -14,5 +14,34 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Hidden static form for Netlify build-time detection.
+         Submissions are handled by the React app via fetch. -->
+    <form name="servicing-request" data-netlify="true" hidden>
+      <input type="hidden" name="form-name" value="servicing-request" />
+      <input type="radio"  name="servicing" value="Full Service (Full-sus MTB) — S$250" />
+      <input type="radio"  name="servicing" value="Full Service (Hardtail) — S$200" />
+      <input type="radio"  name="servicing" value="Basic Service (All bikes) — S$100" />
+      <input type="radio"  name="delivery"  value="Self drop-off" />
+      <input type="radio"  name="delivery"  value="Pick-up" />
+      <input type="radio"  name="delivery"  value="Drop-off" />
+      <input type="text"   name="first-name" />
+      <input type="text"   name="last-name" />
+      <input type="text"   name="address" />
+      <input type="tel"    name="mobile" />
+      <input type="email"  name="email" />
+      <input type="text"   name="bike-brand" />
+      <input type="text"   name="bike-model" />
+      <input type="text"   name="bike-year" />
+      <textarea            name="additional-requests"></textarea>
+      <select              name="referral">
+        <option>Friend / Word of Mouth</option>
+        <option>Instagram</option>
+        <option>Facebook</option>
+        <option>Google Search</option>
+        <option>Walk-by / Shop Signage</option>
+        <option>Other</option>
+      </select>
+    </form>
   </body>
 </html>
