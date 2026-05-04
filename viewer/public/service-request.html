@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8" /><title>Service Request</title></head>
+<body>
+  <!-- Static form for Netlify build-time detection.
+       Actual submissions are handled by the React app via fetch. -->
+  <form name="service-request" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="service-request" />
+    <input type="text"   name="servicing" />
+    <input type="text"   name="delivery" />
+    <input type="text"   name="first-name" />
+    <input type="text"   name="last-name" />
+    <input type="text"   name="address" />
+    <input type="tel"    name="mobile" />
+    <input type="email"  name="email" />
+    <input type="text"   name="bike-brand" />
+    <input type="text"   name="bike-model" />
+    <input type="text"   name="bike-year" />
+    <textarea            name="additional-requests"></textarea>
+    <select              name="referral">
+      <option>Friend / Word of Mouth</option>
+      <option>Instagram</option>
+      <option>Facebook</option>
+      <option>Google Search</option>
+      <option>Walk-by / Shop Signage</option>
+      <option>Other</option>
+    </select>
+  </form>
+</body>
+</html>

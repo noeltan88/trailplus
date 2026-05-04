@@ -129,6 +129,42 @@ html{-webkit-text-size-adjust:100%;}
 .tp-epics-cell{background:${CARD};overflow:hidden;aspect-ratio:1;}
 .tp-epics-cell img{width:100%;height:100%;object-fit:cover;display:block;opacity:0.88;}
 
+/* SERVICE REQUEST FORM */
+.tp-form{margin-top:0.5rem;}
+.tp-form-section{margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid ${BR};}
+.tp-form-section:last-of-type{border-bottom:none;}
+.tp-form-section-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1rem;text-transform:uppercase;letter-spacing:0.08em;color:#fff;margin-bottom:1rem;}
+.tp-form-radio-group{display:flex;flex-direction:column;gap:0.5rem;}
+.tp-form-radio{display:flex;align-items:flex-start;gap:0.8rem;cursor:pointer;padding:0.75rem 0.9rem;border:1px solid ${BR};border-radius:2px;transition:border-color 0.2s,background 0.2s;user-select:none;}
+.tp-form-radio.selected{border-color:${L};background:rgba(200,255,0,0.04);}
+.tp-form-radio input[type="radio"]{position:absolute;opacity:0;width:0;height:0;pointer-events:none;}
+.tp-form-radio-dot{width:16px;height:16px;border-radius:50%;border:1.5px solid #444;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:border-color 0.2s;position:relative;}
+.tp-form-radio.selected .tp-form-radio-dot{border-color:${L};}
+.tp-form-radio-dot::after{content:'';width:8px;height:8px;border-radius:50%;background:${L};opacity:0;transition:opacity 0.2s;position:absolute;}
+.tp-form-radio.selected .tp-form-radio-dot::after{opacity:1;}
+.tp-form-radio-main{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.95rem;text-transform:uppercase;letter-spacing:0.04em;color:#e0e0e0;line-height:1.2;}
+.tp-form-radio-sub{font-size:0.75rem;color:#555;margin-top:0.15rem;}
+.tp-form-row{display:flex;flex-direction:column;gap:1rem;}
+.tp-form-field{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1rem;}
+.tp-form-field:last-child{margin-bottom:0;}
+.tp-form-label{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:#777;}
+.tp-form-label-req{color:${L};margin-left:2px;}
+.tp-form-input,.tp-form-textarea,.tp-form-select{background:${CARD};border:1px solid ${BR};border-radius:2px;color:#f0f0f0;font-family:'Barlow',sans-serif;font-size:0.88rem;padding:0.8rem 0.9rem;width:100%;outline:none;transition:border-color 0.2s;-webkit-appearance:none;}
+.tp-form-input::placeholder,.tp-form-textarea::placeholder{color:#444;}
+.tp-form-input:focus,.tp-form-textarea:focus,.tp-form-select:focus{border-color:${L};}
+.tp-form-textarea{min-height:110px;resize:vertical;line-height:1.6;}
+.tp-form-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23555' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0.9rem center;padding-right:2.5rem;cursor:pointer;}
+.tp-form-select option{background:${CARD};}
+.tp-form-select-placeholder{color:#444;}
+.tp-form-submit{background:${L};color:#000;padding:1rem 1.2rem;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:0.95rem;letter-spacing:0.12em;text-transform:uppercase;border:none;border-radius:2px;cursor:pointer;width:100%;display:flex;align-items:center;justify-content:space-between;margin-top:1.5rem;transition:background 0.2s;}
+.tp-form-submit:hover:not(:disabled){background:#d4f500;}
+.tp-form-submit:disabled{opacity:0.5;cursor:not-allowed;}
+.tp-form-success{padding:3rem 0;}
+.tp-form-success-check{width:52px;height:52px;border-radius:50%;background:rgba(200,255,0,0.12);border:1.5px solid ${L};display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;}
+.tp-form-success-check svg{width:22px;height:22px;}
+.tp-form-success-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;text-transform:uppercase;color:#fff;margin-bottom:0.6rem;line-height:1;}
+.tp-form-success-desc{font-size:0.87rem;color:#666;line-height:1.7;}
+
 /* HOME */
 .tp-hero{position:relative;min-height:520px;display:flex;flex-direction:column;justify-content:flex-end;padding:2rem 1.3rem 2rem;overflow:hidden;}
 .tp-hero-bg{position:absolute;inset:0;background:#0a0a0a;}
@@ -390,6 +426,10 @@ html{-webkit-text-size-adjust:100%;}
 
   /* RAW EPICS GALLERY */
   .tp-epics-gallery{grid-template-columns:repeat(3,1fr);gap:4px;}
+
+  /* SERVICE REQUEST FORM */
+  .tp-form-row{flex-direction:row;}
+  .tp-form-row .tp-form-field{flex:1;margin-bottom:0;}
 }
 
 @media(min-width:1440px){
@@ -944,6 +984,236 @@ function PageTraining({ onBack }) {
   );
 }
 
+/* ─── SERVICE REQUEST FORM PAGE ─── */
+function PageServiceRequest({ onBack }) {
+  const [servicing, setServicing] = useState("");
+  const [delivery, setDelivery] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
+  const needsAddress = delivery === "pick-up" || delivery === "drop-off";
+
+  const encode = (data) =>
+    Object.keys(data)
+      .map((k) => encodeURIComponent(k) + "=" + encodeURIComponent(data[k]))
+      .join("&");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
+    const formData = {};
+    new FormData(e.target).forEach((v, k) => { formData[k] = v; });
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({ "form-name": "service-request", ...formData }),
+      });
+      setSubmitted(true);
+      window.scrollTo?.(0, 0);
+    } catch {
+      alert("Submission failed. Please try again or WhatsApp us at +65 9183 2244.");
+    }
+    setSubmitting(false);
+  };
+
+  if (submitted) {
+    return (
+      <div>
+        <div className="tp-page-hero">
+          <BackBtn onClick={onBack} />
+          <div className="tp-sec-tag">Book a Service</div>
+          <div className="tp-page-title">Request<br />Received</div>
+          <div className="tp-accent-line" />
+        </div>
+        <div className="tp-section dark">
+          <div className="tp-form-success">
+            <div className="tp-form-success-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#C8FF00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
+            <div className="tp-form-success-title">We're on it.</div>
+            <p className="tp-form-success-desc">
+              Thanks for your request. We'll review it and reach out within 1–2 business days to confirm your booking and any next steps.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const SERVICING_OPTS = [
+    { value:"Full Service (Full-sus MTB) — S$250", label:"Full Service — Full-sus MTB", price:"S$250" },
+    { value:"Full Service (Hardtail) — S$200",     label:"Full Service — Hardtail",     price:"S$200" },
+    { value:"Basic Service (All bikes) — S$100",   label:"Basic Service — All Bikes",   price:"S$100" },
+  ];
+
+  const DELIVERY_OPTS = [
+    { value:"Self drop-off", label:"No — I'll send it in myself", sub:"Drop to our workshop" },
+    { value:"Pick-up",       label:"Pick-up",                      sub:"We collect from you" },
+    { value:"Drop-off",      label:"Drop-off",                     sub:"We deliver back to you" },
+  ];
+
+  const REFERRAL_OPTS = [
+    "Friend / Word of Mouth",
+    "Instagram",
+    "Facebook",
+    "Google Search",
+    "Walk-by / Shop Signage",
+    "Other",
+  ];
+
+  return (
+    <div>
+      <div className="tp-page-hero">
+        <BackBtn onClick={onBack} />
+        <div className="tp-sec-tag">Book a Service</div>
+        <div className="tp-page-title">Servicing<br />Request</div>
+        <p className="tp-page-desc">Fill in the details below and we'll get back to confirm your booking.</p>
+        <div className="tp-accent-line" />
+      </div>
+
+      <div className="tp-section dark">
+        <form
+          name="service-request"
+          method="POST"
+          data-netlify="true"
+          onSubmit={handleSubmit}
+          className="tp-form"
+        >
+          <input type="hidden" name="form-name" value="service-request" />
+
+          {/* 1 — Servicing Type */}
+          <div className="tp-form-section">
+            <div className="tp-form-section-title">Servicing Required <span className="tp-form-label-req">*</span></div>
+            <div className="tp-form-radio-group">
+              {SERVICING_OPTS.map(opt => (
+                <label key={opt.value} className={`tp-form-radio${servicing === opt.value ? " selected" : ""}`}>
+                  <input type="radio" name="servicing" value={opt.value} required onChange={() => setServicing(opt.value)} />
+                  <div className="tp-form-radio-dot" />
+                  <div>
+                    <div className="tp-form-radio-main">{opt.label}</div>
+                    <div className="tp-form-radio-sub">@ {opt.price}</div>
+                  </div>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {/* 2 — Pick-up / Drop-off */}
+          <div className="tp-form-section">
+            <div className="tp-form-section-title">Pick-up / Drop-off <span className="tp-form-label-req">*</span></div>
+            <div className="tp-form-radio-group">
+              {DELIVERY_OPTS.map(opt => (
+                <label key={opt.value} className={`tp-form-radio${delivery === opt.value ? " selected" : ""}`}>
+                  <input type="radio" name="delivery" value={opt.value} required onChange={() => setDelivery(opt.value)} />
+                  <div className="tp-form-radio-dot" />
+                  <div>
+                    <div className="tp-form-radio-main">{opt.label}</div>
+                    <div className="tp-form-radio-sub">{opt.sub}</div>
+                  </div>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {/* 3 & 4 — Personal Details */}
+          <div className="tp-form-section">
+            <div className="tp-form-section-title">Your Details</div>
+            <div className="tp-form-row" style={{ marginBottom:"1rem" }}>
+              <div className="tp-form-field">
+                <label className="tp-form-label">First Name <span className="tp-form-label-req">*</span></label>
+                <input className="tp-form-input" type="text" name="first-name" required placeholder="John" />
+              </div>
+              <div className="tp-form-field">
+                <label className="tp-form-label">Last Name <span className="tp-form-label-req">*</span></label>
+                <input className="tp-form-input" type="text" name="last-name" required placeholder="Doe" />
+              </div>
+            </div>
+
+            {needsAddress && (
+              <div className="tp-form-field">
+                <label className="tp-form-label">Address <span className="tp-form-label-req">*</span></label>
+                <input
+                  className="tp-form-input"
+                  type="text"
+                  name="address"
+                  required={needsAddress}
+                  placeholder="Block / Street / Unit / Postal Code"
+                />
+              </div>
+            )}
+
+            {/* 5 & 6 — Mobile + Email */}
+            <div className="tp-form-row">
+              <div className="tp-form-field">
+                <label className="tp-form-label">Mobile Number <span className="tp-form-label-req">*</span></label>
+                <input className="tp-form-input" type="tel" name="mobile" required placeholder="+65 9123 4567" />
+              </div>
+              <div className="tp-form-field">
+                <label className="tp-form-label">Email <span className="tp-form-label-req">*</span></label>
+                <input className="tp-form-input" type="email" name="email" required placeholder="john@example.com" />
+              </div>
+            </div>
+          </div>
+
+          {/* 7 — Bike Details */}
+          <div className="tp-form-section">
+            <div className="tp-form-section-title">Bike Details</div>
+            <div className="tp-form-row">
+              <div className="tp-form-field">
+                <label className="tp-form-label">Brand <span className="tp-form-label-req">*</span></label>
+                <input className="tp-form-input" type="text" name="bike-brand" required placeholder="e.g. Trek" />
+              </div>
+              <div className="tp-form-field">
+                <label className="tp-form-label">Model <span className="tp-form-label-req">*</span></label>
+                <input className="tp-form-input" type="text" name="bike-model" required placeholder="e.g. Slash 9.9" />
+              </div>
+              <div className="tp-form-field">
+                <label className="tp-form-label">Year</label>
+                <input className="tp-form-input" type="text" name="bike-year" placeholder="e.g. 2023" />
+              </div>
+            </div>
+          </div>
+
+          {/* 8 — Additional Requests */}
+          <div className="tp-form-section">
+            <div className="tp-form-section-title">Additional Requests</div>
+            <div className="tp-form-field">
+              <label className="tp-form-label">Any specific instructions or requests?</label>
+              <textarea
+                className="tp-form-textarea"
+                name="additional-requests"
+                placeholder="e.g. Please also check the rear brake, replace chain if worn…"
+              />
+            </div>
+          </div>
+
+          {/* 9 — Referral */}
+          <div className="tp-form-section">
+            <div className="tp-form-section-title">How Did You Find Us?</div>
+            <div className="tp-form-field">
+              <label className="tp-form-label">Select one</label>
+              <select className="tp-form-select" name="referral" defaultValue="">
+                <option value="" disabled>Select an option…</option>
+                {REFERRAL_OPTS.map(opt => (
+                  <option key={opt} value={opt}>{opt}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" className="tp-form-submit" disabled={submitting}>
+            <span>{submitting ? "SUBMITTING…" : "SUBMIT REQUEST"}</span>
+            <span>→</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+}
+
 /* ─── HOME PAGE ─── */
 function HomePage({ onNav }) {
   const [activeSvc, setActiveSvc] = useState(0);
@@ -1227,6 +1497,7 @@ function HomePage({ onNav }) {
               <li><a onClick={() => onNav("bike-build")}>Custom Bike-Build</a></li>
               <li><a onClick={() => onNav("wheel-build")}>Custom Wheel-Build</a></li>
               <li><a onClick={() => onNav("training")}>MTB Training & Guiding</a></li>
+              <li><a onClick={() => onNav("service-request")} style={{ color:"#C8FF00" }}>Book a Service →</a></li>
               <li><a href="https://trailplus.sg/#brands" target="_blank" rel="noreferrer">Brands</a></li>
               <li><a href="https://trailplus.sg/#contact_us" target="_blank" rel="noreferrer">Contact Us</a></li>
             </ul>
@@ -1257,6 +1528,7 @@ function Menu({ open, onClose, onNav }) {
     { label:"Custom Bike-Build", page:"bike-build" },
     { label:"Custom Wheel-Build", page:"wheel-build" },
     { label:"MTB Training & Guiding", page:"training" },
+    { label:"Book a Service", page:"service-request" },
   ];
 
   const navTo = (page) => { onNav(page); onClose(); setSvcOpen(false); };
@@ -1328,12 +1600,13 @@ export default function TrailPlusApp() {
 
   const renderPage = () => {
     switch (page) {
-      case "packages":   return <PageServicePackages onBack={() => navTo("home")} />;
-      case "full-service": return <PageFullService onBack={() => navTo("home")} />;
-      case "bike-build": return <PageBikeBuild onBack={() => navTo("home")} />;
-      case "wheel-build": return <PageWheelBuild onBack={() => navTo("home")} />;
-      case "training":   return <PageTraining onBack={() => navTo("home")} />;
-      default:           return <HomePage onNav={navTo} />;
+      case "packages":         return <PageServicePackages onBack={() => navTo("home")} />;
+      case "full-service":     return <PageFullService onBack={() => navTo("home")} />;
+      case "bike-build":       return <PageBikeBuild onBack={() => navTo("home")} />;
+      case "wheel-build":      return <PageWheelBuild onBack={() => navTo("home")} />;
+      case "training":         return <PageTraining onBack={() => navTo("home")} />;
+      case "service-request":  return <PageServiceRequest onBack={() => navTo("home")} />;
+      default:                 return <HomePage onNav={navTo} />;
     }
   };
 
