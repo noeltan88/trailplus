@@ -429,12 +429,16 @@ const BUILD_IMGS = [
 ];
 
 const WHEEL_IMGS = [
-  "https://trailplus.sg/wp-content/uploads/2020/04/56395124_2275100852763817_2288770982363529216_o.jpg",
-  "https://trailplus.sg/wp-content/uploads/2020/04/61171992_2310987512508484_7733524924995731456_o.jpg",
-  "https://trailplus.sg/wp-content/uploads/2020/04/56764329_2275100789430490_348055894740697088_o.jpg",
-  "https://trailplus.sg/wp-content/uploads/2020/04/61446267_2310987572508478_5913958984913518592_o.jpg",
-  "https://trailplus.sg/wp-content/uploads/2020/04/60881031_2307192792887956_1587398643923550208_o.jpg",
-  "https://trailplus.sg/wp-content/uploads/2020/04/61613201_2310987609175141_1374722626613673984_o.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777884001/56395124_2275100852763817_2288770982363529216_o_zvk7dq.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777884001/56764329_2275100789430490_348055894740697088_o_shxiqq.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777884002/60881031_2307192792887956_1587398643923550208_o_ibj8fx.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777884002/61102529_2307192872887948_5682624255280283648_o_1_su25et.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777884001/61102529_2307192872887948_5682624255280283648_o_tdrpxi.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777884001/61171992_2310987512508484_7733524924995731456_o_nea7xd.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777884001/61446267_2310987572508478_5913958984913518592_o_w9xkgc.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777884002/61613201_2310987609175141_1374722626613673984_o_zb1ccb.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777884002/81616286_2496784770595423_4876593287642742784_o_ktznkl.jpg",
+  "https://res.cloudinary.com/dhumj7ari/image/upload/v1777884001/81813319_2496784867262080_8638582247747747840_o-998x1024_wpcrbm.jpg",
 ];
 
 const MACH6_IMGS = [
