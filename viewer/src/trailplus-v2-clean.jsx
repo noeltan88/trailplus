@@ -199,7 +199,6 @@ html{-webkit-text-size-adjust:100%;}
 .tp-svc-img{width:100%;height:180px;background:linear-gradient(135deg,#1a1a18,#252520);position:relative;overflow:hidden;}
 .tp-svc-img img{width:100%;height:100%;object-fit:cover;opacity:0.75;display:block;}
 .tp-svc-num-tag{position:absolute;top:0.7rem;right:0.8rem;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:0.85rem;color:rgba(255,255,255,0.2);letter-spacing:0.05em;}
-.tp-svc-badge-icon{position:absolute;bottom:0.75rem;left:0.75rem;width:34px;height:34px;background:${L};display:flex;align-items:center;justify-content:center;font-size:0.95rem;border-radius:2px;}
 .tp-svc-body{padding:1rem 1rem 1rem;}
 .tp-svc-num-lbl{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:#444;margin-bottom:0.4rem;}
 .tp-svc-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.4rem;text-transform:uppercase;color:#fff;line-height:1.0;margin-bottom:0.45rem;}
@@ -580,17 +579,17 @@ function BackBtn({ label="All Services", onClick }) {
   );
 }
 
-function BookBtn({ label="Make an Appointment" }) {
+function BookBtn({ label="Make an Appointment", onNav }) {
   return (
-    <a href="https://trailplus.sg/servicing-request-form/" className="tp-btn-lime" target="_blank" rel="noreferrer">
+    <button className="tp-btn-lime" onClick={() => onNav("service-request")}>
       {label} <span>→</span>
-    </a>
+    </button>
   );
 }
 
 /* ─── SUB-PAGES ─── */
 
-function PageServicePackages({ onBack }) {
+function PageServicePackages({ onBack, onNav }) {
   return (
     <div>
       <div className="tp-page-hero">
@@ -613,7 +612,7 @@ function PageServicePackages({ onBack }) {
             <ul className="tp-pkg-list">
               {pkg.items.map((item, i) => <li key={i}>{item}</li>)}
             </ul>
-            <BookBtn />
+            <BookBtn onNav={onNav} />
           </div>
         ))}
         <div className="tp-pkg-note">
@@ -812,7 +811,7 @@ function PageFullService({ onBack }) {
   );
 }
 
-function PageBikeBuild({ onBack }) {
+function PageBikeBuild({ onBack, onNav }) {
   const builds = [
     { name:"PIVOT MACH 6", imgs: MACH6_IMGS },
     { name:"FORBIDDEN DRUID", imgs: DRUID_IMGS },
@@ -838,7 +837,7 @@ function PageBikeBuild({ onBack }) {
         <div className="tp-build-cta-wrap">
           <div className="tp-build-cta-title">Ready to Build?</div>
           <div className="tp-build-cta-desc">Too many options? Let us help narrow it down based on your riding style and budget.</div>
-          <BookBtn label="Start Your Build" />
+          <BookBtn label="Start Your Build" onNav={onNav} />
           <a href="https://wa.me/6591832244" className="tp-btn-dark" target="_blank" rel="noreferrer">
             Chat on WhatsApp <span>→</span>
           </a>
@@ -894,7 +893,7 @@ function PageWheelBuild({ onBack }) {
         <div className="tp-build-cta-wrap" style={{ marginBottom:"1.5rem" }}>
           <div className="tp-build-cta-title">Not Sure Where to Start?</div>
           <div className="tp-build-cta-desc">Contact us and we'll help you choose the right hub, rim, and spoke setup for your ride.</div>
-          <BookBtn label="Enquire Now" />
+          <BookBtn label="Enquire Now" onNav={onNav} />
         </div>
 
         <div className="tp-sec-title" style={{ marginBottom:"0.8rem" }}>Recent Builds</div>
@@ -910,7 +909,7 @@ function PageWheelBuild({ onBack }) {
   );
 }
 
-function PageTraining({ onBack }) {
+function PageTraining({ onBack, onNav }) {
   const certs = [
     "Professional Mountain Bike Instructors Association Level 2 Certification",
     "Cycling UK Mountain Bike Leader Certification",
@@ -1236,7 +1235,7 @@ function HomePage({ onNav }) {
           </h1>
           <p className="tp-hero-desc">Expert servicing, custom builds and precision tuning for riders who take their ride seriously.</p>
           <div className="tp-hero-btns" style={{display:"flex",flexDirection:"column"}}>
-            <a href="https://trailplus.sg/servicing-request-form/" className="tp-home-btn-lime" target="_blank" rel="noreferrer">BOOK A SERVICE <span>→</span></a>
+            <button className="tp-home-btn-lime" onClick={() => onNav("service-request")}>BOOK A SERVICE <span>→</span></button>
             <div className="tp-home-btn-dark" style={{ cursor:"pointer", marginTop:"0.7rem" }} onClick={() => onNav("bike-build")}>BUILD YOUR BIKE <span>→</span></div>
           </div>
         </div>
@@ -1333,7 +1332,6 @@ function HomePage({ onNav }) {
             <div className="tp-svc-img">
               <img src={BUILD_IMGS[activeSvc % BUILD_IMGS.length]} alt={SVCS[activeSvc].name} onError={e => e.target.style.display="none"} />
               <div className="tp-svc-num-tag">{SVCS[activeSvc].num}</div>
-              <div className="tp-svc-badge-icon">{SVCS[activeSvc].icon}</div>
             </div>
             <div className="tp-svc-body">
               <div className="tp-svc-num-lbl">{SVCS[activeSvc].num}</div>
@@ -1353,7 +1351,6 @@ function HomePage({ onNav }) {
               <div className="tp-svc-img">
                 <img src={BUILD_IMGS[i % BUILD_IMGS.length]} alt={svc.name} onError={e => e.target.style.display="none"} />
                 <div className="tp-svc-num-tag">{svc.num}</div>
-                <div className="tp-svc-badge-icon">{svc.icon}</div>
               </div>
               <div className="tp-svc-body">
                 <div className="tp-svc-num-lbl">{svc.num}</div>
@@ -1399,7 +1396,7 @@ function HomePage({ onNav }) {
           <div className="tp-cta-actions">
             <a href="https://wa.me/6591832244" className="tp-cta-btn" target="_blank" rel="noreferrer">BOOK NOW VIA WHATSAPP 💬</a>
             <span className="tp-cta-alt-lbl">OR</span>
-            <a href="https://trailplus.sg/servicing-request-form/" className="tp-cta-alt-link" target="_blank" rel="noreferrer">CONTACT US →</a>
+            <span className="tp-cta-alt-link" style={{cursor:"pointer"}} onClick={() => onNav("service-request")}>CONTACT US →</span>
           </div>
         </div>
       </section>
@@ -1601,9 +1598,9 @@ function Menu({ open, onClose, onNav }) {
           </div>
         </div>
 
-        <a href="https://trailplus.sg/servicing-request-form/" className="tp-menu-cta" target="_blank" rel="noreferrer">
+        <button className="tp-menu-cta" onClick={() => navTo("service-request")}>
           BOOK A SERVICE <span>→</span>
-        </a>
+        </button>
       </div>
     </>
   );
@@ -1618,11 +1615,11 @@ export default function TrailPlusApp() {
 
   const renderPage = () => {
     switch (page) {
-      case "packages":         return <PageServicePackages onBack={() => navTo("home")} />;
+      case "packages":         return <PageServicePackages onBack={() => navTo("home")} onNav={navTo} />;
       case "full-service":     return <PageFullService onBack={() => navTo("home")} />;
-      case "bike-build":       return <PageBikeBuild onBack={() => navTo("home")} />;
+      case "bike-build":       return <PageBikeBuild onBack={() => navTo("home")} onNav={navTo} />;
       case "wheel-build":      return <PageWheelBuild onBack={() => navTo("home")} />;
-      case "training":         return <PageTraining onBack={() => navTo("home")} />;
+      case "training":         return <PageTraining onBack={() => navTo("home")} onNav={navTo} />;
       case "service-request":  return <PageServiceRequest onBack={() => navTo("home")} />;
       default:                 return <HomePage onNav={navTo} />;
     }
@@ -1644,7 +1641,7 @@ export default function TrailPlusApp() {
             <span className="tp-nav-link" onClick={() => navTo("bike-build")}>Custom Builds</span>
             <span className="tp-nav-link" onClick={() => navTo("wheel-build")}>Wheel Builds</span>
             <span className="tp-nav-link" onClick={() => navTo("training")}>Training</span>
-            <a href="https://trailplus.sg/servicing-request-form/" className="tp-nav-cta" target="_blank" rel="noreferrer">BOOK NOW</a>
+            <button className="tp-nav-cta" onClick={() => navTo("service-request")}>BOOK NOW</button>
           </div>
           <div className="tp-ham" onClick={() => setMenuOpen(true)}>
             <span /><span /><span />
