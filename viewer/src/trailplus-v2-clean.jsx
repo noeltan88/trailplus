@@ -417,6 +417,7 @@ html{-webkit-text-size-adjust:100%;}
   .tp-pkg-card{margin-bottom:0;}
 
   /* FULL SERVICE */
+  .tp-fs-inner{max-width:1320px;margin:0 auto;}
   .tp-fs-desktop-grid{display:grid!important;grid-template-columns:repeat(2,1fr);gap:2.5rem;align-items:start;}
   .tp-gallery-main{width:100%!important;height:400px!important;aspect-ratio:unset!important;}
 
@@ -785,6 +786,7 @@ function PageFullService({ onBack }) {
       </div>
 
       <div className="tp-section dark">
+        <div className="tp-fs-inner">
         {sections.map(s => (
           <div key={s.label} className="tp-fs-block">
             <div className="tp-fs-label">{s.icon} {s.label}</div>
@@ -812,6 +814,7 @@ function PageFullService({ onBack }) {
         <div style={{ marginTop:"1.5rem" }}>
           <BookBtn />
         </div>
+        </div>{/* /tp-fs-inner */}
       </div>
     </div>
   );
@@ -1532,7 +1535,7 @@ function HomePage({ onNav }) {
               <li><a onClick={() => onNav("training")}>MTB Training & Guiding</a></li>
               <li><a onClick={() => onNav("service-request")} style={{ color:"#C8FF00" }}>Book a Service →</a></li>
               <li><a href="https://trailplus.sg/#brands" target="_blank" rel="noreferrer">Brands</a></li>
-              <li><a href="https://trailplus.sg/#contact_us" target="_blank" rel="noreferrer">Contact Us</a></li>
+              <li><a onClick={() => onNav("service-request")}>Contact Us</a></li>
             </ul>
           </div>
           <div>
