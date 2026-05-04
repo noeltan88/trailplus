@@ -1817,7 +1817,7 @@ function HomePage() {
               <li><a onClick={() => navigate(toPath("service-request"))} style={{ color:"#C8FF00" }}>Book a Service →</a></li>
               <li><a onClick={() => navigate(toPath("directions"))}>Directions</a></li>
               <li><a href="https://trailplus.sg/#brands" target="_blank" rel="noreferrer">Brands</a></li>
-              <li><a onClick={() => navigate(toPath("service-request"))}>Contact Us</a></li>
+              <li><a href="https://wa.me/6591832244?text=Hi%20Trail%2B!%20I'd%20like%20to%20enquire%20about%20your%20services." target="_blank" rel="noreferrer">Contact Us</a></li>
             </ul>
           </div>
           <div>
@@ -1955,7 +1955,7 @@ export default function TrailPlusApp() {
 
         {/* WHATSAPP FLOAT BUTTON */}
         <a
-          href="https://wa.me/6591832244?text=Hi%20Trail%2B!%20I'd%20like%20to%20enquire%20about%20your%20services"
+          href="https://wa.me/6591832244?text=Hi%20Trail%2B!%20I'd%20like%20to%20book%20a%20servicing%20appointment."
           target="_blank"
           rel="noreferrer"
           className="tp-messenger"
