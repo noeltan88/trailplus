@@ -1737,7 +1737,7 @@ function HomePage() {
       <section className="tp-insta">
         <div className="tp-insta-inner">
         <div className="tp-sec-tag">Follow Our Journey</div>
-        <div className="tp-insta-handle">@TRAILPLUS.SG</div>
+        <div className="tp-insta-handle">@TRAILPLUS</div>
         <div className="tp-insta-grid">
           {WHEEL_IMGS.map((src,i) => (
             <div key={i} className="tp-insta-cell">
