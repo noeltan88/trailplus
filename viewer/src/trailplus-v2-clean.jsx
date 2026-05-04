@@ -204,6 +204,12 @@ html{-webkit-text-size-adjust:100%;}
 .tp-svc-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.4rem;text-transform:uppercase;color:#fff;line-height:1.0;margin-bottom:0.45rem;}
 .tp-svc-desc{font-size:0.8rem;color:#666;line-height:1.6;margin-bottom:0.85rem;}
 .tp-svc-link{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;color:${L};display:flex;align-items:center;gap:0.4rem;}
+.tp-svc-carousel{overflow:hidden;}
+.tp-svc-track{display:flex;transition:transform 300ms ease;will-change:transform;}
+.tp-svc-track .tp-svc-card{flex:0 0 100%;min-width:100%;margin:0;}
+.tp-test-single{overflow:hidden;}
+.tp-test-track{display:flex;transition:transform 300ms ease;will-change:transform;}
+.tp-test-track .tp-test-card{flex:0 0 100%;min-width:100%;}
 .tp-dots{display:flex;justify-content:center;gap:0.4rem;padding:0.5rem 0 0.2rem;}
 .tp-dot-on{width:18px;height:6px;background:${L};border-radius:3px;}
 .tp-dot-off{width:6px;height:6px;background:#2a2a2a;border-radius:50%;cursor:pointer;}
@@ -1328,17 +1334,21 @@ function HomePage({ onNav }) {
             svcTouchX.current = null;
           }}
         >
-          <div className="tp-svc-card" onClick={() => onNav(SVCS[activeSvc].page)}>
-            <div className="tp-svc-img">
-              <img src={BUILD_IMGS[activeSvc % BUILD_IMGS.length]} alt={SVCS[activeSvc].name} onError={e => e.target.style.display="none"} />
-              <div className="tp-svc-num-tag">{SVCS[activeSvc].num}</div>
-            </div>
-            <div className="tp-svc-body">
-              <div className="tp-svc-num-lbl">{SVCS[activeSvc].num}</div>
-              <div className="tp-svc-name">{SVCS[activeSvc].name.replace("\n"," ")}</div>
-              <div className="tp-svc-desc">{SVCS[activeSvc].desc}</div>
-              <div className="tp-svc-link">LEARN MORE <span>→</span></div>
-            </div>
+          <div className="tp-svc-track" style={{ transform:`translateX(-${activeSvc * 100}%)` }}>
+            {SVCS.map((svc, i) => (
+              <div key={svc.num} className="tp-svc-card" onClick={() => onNav(svc.page)}>
+                <div className="tp-svc-img">
+                  <img src={BUILD_IMGS[i % BUILD_IMGS.length]} alt={svc.name} onError={e => e.target.style.display="none"} />
+                  <div className="tp-svc-num-tag">{svc.num}</div>
+                </div>
+                <div className="tp-svc-body">
+                  <div className="tp-svc-num-lbl">{svc.num}</div>
+                  <div className="tp-svc-name">{svc.name.replace("\n"," ")}</div>
+                  <div className="tp-svc-desc">{svc.desc}</div>
+                  <div className="tp-svc-link">LEARN MORE <span>→</span></div>
+                </div>
+              </div>
+            ))}
           </div>
           <div className="tp-dots">
             {SVCS.map((_,i) => <div key={i} className={i === activeSvc ? "tp-dot-on" : "tp-dot-off"} onClick={() => setActiveSvc(i)} />)}
@@ -1435,15 +1445,19 @@ function HomePage({ onNav }) {
               testTouchX.current = null;
             }}
           >
-            <div className="tp-test-card">
-              <div className="tp-test-text">{TESTS[activeTest].q}</div>
-              <div className="tp-test-author">
-                <div className="tp-test-ava">{TESTS[activeTest].ava}</div>
-                <div>
-                  <div className="tp-test-name">{TESTS[activeTest].name}</div>
-                  <div className="tp-test-role">{TESTS[activeTest].role}</div>
+            <div className="tp-test-track" style={{ transform:`translateX(-${activeTest * 100}%)` }}>
+              {TESTS.map((t, i) => (
+                <div key={i} className="tp-test-card">
+                  <div className="tp-test-text">{t.q}</div>
+                  <div className="tp-test-author">
+                    <div className="tp-test-ava">{t.ava}</div>
+                    <div>
+                      <div className="tp-test-name">{t.name}</div>
+                      <div className="tp-test-role">{t.role}</div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
             <div className="tp-dots" style={{ marginTop:"1rem" }}>
               {TESTS.map((_,i) => <div key={i} className={i === activeTest ? "tp-dot-on" : "tp-dot-off"} onClick={() => setActiveTest(i)} />)}
@@ -1479,7 +1493,7 @@ function HomePage({ onNav }) {
             </div>
           ))}
         </div>
-        <a href="https://instagram.com/trailplus.sg" className="tp-insta-btn" target="_blank" rel="noreferrer">FOLLOW US ON INSTAGRAM →</a>
+        <a href="https://instagram.com/trailplus" className="tp-insta-btn" target="_blank" rel="noreferrer">FOLLOW US ON INSTAGRAM →</a>
         </div>{/* /tp-insta-inner */}
       </section>
 
@@ -1493,7 +1507,7 @@ function HomePage({ onNav }) {
         <div className="tp-footer-tag">Singapore's MTB Performance Lab. Expert servicing, custom builds and precision tuning for riders who demand more from their ride.</div>
         <div className="tp-footer-socials">
           {[
-            ["https://instagram.com/trailplus.sg", <svg key="ig" viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>],
+            ["https://instagram.com/trailplus", <svg key="ig" viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>],
             ["https://facebook.com/trailplus.sg", <svg key="fb" viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>],
             ["https://www.youtube.com/@trailplussg", <svg key="yt" viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>],
             ["https://www.tiktok.com/@trailplus.sg", <svg key="tt" viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>],
@@ -1584,7 +1598,7 @@ function Menu({ open, onClose, onNav }) {
             <span className="tp-menu-item-label">Brands</span>
             <span className="tp-menu-item-arrow">→</span>
           </div>
-          <div className="tp-menu-item" onClick={() => { window.open("https://www.instagram.com/trailplus.sg","_blank"); onClose(); }}>
+          <div className="tp-menu-item" onClick={() => { window.open("https://instagram.com/trailplus","_blank"); onClose(); }}>
             <span className="tp-menu-item-label">Follow Us</span>
             <span className="tp-menu-item-arrow">→</span>
           </div>
